@@ -1,0 +1,31 @@
+{
+  "name": "রওজায়ে আতহার ট্রাভেলস | ROWZAYE ATHAR TRAVELS",
+  "short_name": "Rowzaye Athar",
+  "description": "রওজায়ে আতহার ট্রাভেলস - নির্ভরযোগ্য ও প্রিমিয়াম হজ এবং উমরাহ সেবা।",
+  "icons": [
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#c59b6d",
+  "background_color": "#06090e",
+  "display": "standalone",
+  "start_url": "./"
+}
