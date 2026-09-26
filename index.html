@@ -60,6 +60,30 @@
 
   <style>
     /* ==========================================================================
+       FONT AWESOME ICON INTEGRITY PROTECTION (BOTH THEMES)
+       ========================================================================== */
+    i[class*="fa-"], i.fa-solid, i.fa-regular, i.fa-brands, .fa-solid, .fa-regular, .fa-brands, .fas, .far, .fab {
+      font-style: normal !important;
+      line-height: 1 !important;
+      display: inline-block;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      flex-shrink: 0;
+    }
+    .fa-solid, .fas {
+      font-family: "Font Awesome 6 Free" !important;
+      font-weight: 900 !important;
+    }
+    .fa-regular, .far {
+      font-family: "Font Awesome 6 Free" !important;
+      font-weight: 400 !important;
+    }
+    .fa-brands, .fab {
+      font-family: "Font Awesome 6 Brands" !important;
+      font-weight: 400 !important;
+    }
+
+    /* ==========================================================================
        GLOBAL TYPOGRAPHY & READABILITY SYSTEM (BOTH THEMES)
        ========================================================================== */
     html {
@@ -268,25 +292,20 @@
     }
 
     /* Typography in Light Mode - High Contrast Boost */
-    html.light-mode .text-white {
+    html.light-mode .text-white:not(i) {
       color: #090d16 !important;
-      font-weight: 700;
     }
     html.light-mode .text-slate-200 {
       color: #0f172a !important;
-      font-weight: 500;
     }
     html.light-mode .text-slate-300 {
       color: #1e293b !important;
-      font-weight: 450;
     }
     html.light-mode .text-slate-400 {
-      color: #334155 !important; /* Deep Slate 700 - never faint or low contrast! */
-      font-weight: 450;
+      color: #334155 !important; /* Deep Slate 700 */
     }
     html.light-mode .text-slate-500 {
-      color: #475569 !important; /* Slate 600 - crisp legibility */
-      font-weight: 500;
+      color: #475569 !important; /* Slate 600 */
     }
     html.light-mode p,
     html.light-mode li {
@@ -301,12 +320,12 @@
     html.light-mode .text-brand-goldLight,
     html.light-mode .text-amber-400,
     html.light-mode .text-amber-300 {
-      color: #92400e !important; /* Deep Islamic bronze amber (AAA contrast on white) */
-      font-weight: 600;
+      color: #b45309 !important; /* Deep Islamic bronze amber (AAA contrast) */
     }
-    html.light-mode .text-brand-tealLight {
-      color: #0f766e !important; /* Deep jewel teal (AAA contrast on white) */
-      font-weight: 600;
+    html.light-mode .text-brand-tealLight,
+    html.light-mode .text-teal-400,
+    html.light-mode .text-teal-300 {
+      color: #0f766e !important; /* Deep jewel teal (AAA contrast) */
     }
 
     /* Keep text white over dark photo overlays & colored action buttons */
@@ -315,7 +334,11 @@
     html.light-mode .bg-emerald-600,
     html.light-mode .bg-emerald-600 *,
     html.light-mode .bg-emerald-500,
-    html.light-mode .bg-emerald-500 * {
+    html.light-mode .bg-emerald-500 *,
+    html.light-mode .bg-emerald-700,
+    html.light-mode .bg-emerald-700 *,
+    html.light-mode .whatsapp-hero-btn,
+    html.light-mode .whatsapp-hero-btn * {
       color: #ffffff !important;
     }
 
@@ -378,10 +401,12 @@
     html.light-mode .logo-wrapper:hover img {
       filter: drop-shadow(0 4px 16px rgba(180, 83, 9, 0.6)) drop-shadow(0 0 12px rgba(245, 158, 11, 0.45)) !important;
     }
-    html.light-mode nav .lg\:flex a:not(.bg-gradient-to-r) {
+    html.light-mode nav .lg\:flex a:not(.bg-gradient-to-r),
+    html.light-mode nav .xl\:flex a:not(.bg-gradient-to-r) {
       color: #334155 !important;
     }
-    html.light-mode nav .lg\:flex a:not(.bg-gradient-to-r):hover {
+    html.light-mode nav .lg\:flex a:not(.bg-gradient-to-r):hover,
+    html.light-mode nav .xl\:flex a:not(.bg-gradient-to-r):hover {
       color: #b45309 !important;
     }
     html.light-mode nav a.text-brand-gold {
@@ -832,11 +857,11 @@
       </div>
       <div class="flex items-center gap-2 sm:gap-3 text-xs shrink-0">
         <a href="tel:+8801719161547" class="hover:text-brand-gold transition font-semibold tracking-wide text-slate-200 flex items-center gap-1 text-[11px] sm:text-xs">
-          <i class="fa-solid fa-phone text-brand-gold text-[10px]"></i>
+          <i class="fa-solid fa-phone text-brand-gold text-[10px] shrink-0"></i>
           <span>+880 1719-16 15 47</span>
         </a>
         <a href="https://wa.me/8801719161547?text=আসসালামু%20আলাইকুম,%20আমি%20রওজায়ে%20আতহার%20ট্রাভেলস-এর%20প্যাকেজ%20সম্পর্কে%20জানতে%20চাই" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-2.5 py-1 rounded-full flex items-center gap-1 transition font-medium text-[11px] shadow-sm ml-1">
-          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <i class="fa-brands fa-whatsapp text-sm shrink-0"></i>
           <span class="hidden sm:inline">WhatsApp</span>
         </a>
       </div>
@@ -849,82 +874,82 @@
       <div class="flex justify-between items-center h-16 sm:h-20">
         
         <!-- Logo & Brand Info (No circular border, pure SVG & vivid) -->
-        <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group my-auto">
-          <div class="logo-wrapper relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center">
+        <a href="#" class="flex items-center gap-2 sm:gap-3 group my-auto shrink-0">
+          <div class="logo-wrapper relative w-11 h-11 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex-shrink-0 flex items-center justify-center">
             <div class="logo-glow absolute inset-0 rounded-full pointer-events-none"></div>
             <img src="logo-light.png" alt="Rowzaye Athar Travels Logo" class="relative z-10 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
           </div>
           <div class="brand-text-group flex flex-col justify-center my-auto">
-            <span class="brand-title block text-base sm:text-2xl font-bold text-white tracking-tight font-bengali group-hover:text-brand-goldLight transition-colors">
+            <span class="brand-title block text-sm sm:text-xl lg:text-2xl font-bold text-white tracking-tight font-bengali group-hover:text-brand-goldLight transition-colors whitespace-nowrap">
               রওজায়ে আতহার ট্রাভেলস
             </span>
-            <span class="brand-subtitle block text-[10px] sm:text-[11.5px] font-bold text-brand-gold uppercase tracking-[0.16em] font-serifTitle">
+            <span class="brand-subtitle block text-[9px] sm:text-[10.5px] lg:text-[11.5px] font-bold text-brand-gold uppercase tracking-[0.14em] lg:tracking-[0.16em] font-serifTitle whitespace-nowrap">
               ROWZAYE ATHAR TRAVELS
             </span>
-            <span class="brand-tagline block text-[9.5px] sm:text-[10.5px] text-slate-300/85 font-bengali">
+            <span class="brand-tagline block text-[8.5px] sm:text-[9.5px] lg:text-[10.5px] text-slate-300/85 font-bengali whitespace-nowrap">
               “বিশ্বাসের পথে আমাদের সাথে”
             </span>
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
-        <div class="hidden lg:flex items-center space-x-7 text-sm font-medium">
-          <a href="#hero" class="text-brand-gold transition">মূলপাতা</a>
-          <a href="#packages" class="hover:text-brand-gold transition">উমরাহ প্যাকেজ</a>
+        <!-- Desktop Navigation Links (Only shown on xl screens 1280px+ where it fits perfectly!) -->
+        <div class="hidden xl:flex items-center space-x-4 2xl:space-x-6 text-[13px] 2xl:text-sm font-medium whitespace-nowrap">
+          <a href="#hero" class="text-brand-gold transition hover:text-amber-300">মূলপাতা</a>
+          <a href="#packages" class="text-slate-200 hover:text-brand-gold transition">উমরাহ প্যাকেজ</a>
           <a href="#hajj" class="hover:text-brand-gold transition font-semibold text-amber-300">হজ ২০২৭</a>
-          <a href="#services" class="hover:text-brand-gold transition">আমাদের সেবা</a>
-          <a href="#ziyarah" class="hover:text-brand-gold transition">জিয়ারত গাইড</a>
-          <a href="#why-us" class="hover:text-brand-gold transition">কেন আমরা</a>
-          <a href="#faq" class="hover:text-brand-gold transition">প্রশ্নোত্তর</a>
-          <a href="#contact" class="hover:text-brand-gold transition">যোগাযোগ</a>
+          <a href="#services" class="text-slate-200 hover:text-brand-gold transition">আমাদের সেবা</a>
+          <a href="#ziyarah" class="text-slate-200 hover:text-brand-gold transition">জিয়ারত গাইড</a>
+          <a href="#why-us" class="text-slate-200 hover:text-brand-gold transition">কেন আমরা</a>
+          <a href="#faq" class="text-slate-200 hover:text-brand-gold transition">প্রশ্নোত্তর</a>
+          <a href="#contact" class="text-slate-200 hover:text-brand-gold transition">যোগাযোগ</a>
         </div>
 
-        <!-- Right Action Group (Desktop CTA + Theme Toggle + Mobile/Tablet Hamburger) -->
-        <div class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Right Action Group (Theme Toggle + CTA on xl + Hamburger on < xl) -->
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
           <!-- Theme Toggle Button -->
-          <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="থিম পরিবর্তন করুন (লাইট / ডার্ক)" title="থিম পরিবর্তন করুন" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-amber-400 hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm shrink-0">
-            <i id="themeIcon" class="fa-solid fa-sun text-base"></i>
+          <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="থিম পরিবর্তন করুন (লাইট / ডার্ক)" title="থিম পরিবর্তন করুন" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-amber-400 hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm shrink-0">
+            <i id="themeIcon" class="fa-solid fa-sun text-sm sm:text-base shrink-0"></i>
           </button>
 
           <!-- Desktop CTA Button -->
-          <a href="#packages" class="hidden lg:flex bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-5 py-2.5 rounded-lg shadow-lg hover:shadow-brand-gold/30 hover:brightness-110 transition duration-300 text-sm items-center gap-2">
-            <i class="fa-solid fa-kaaba"></i> প্যাকেজ বুকিং
+          <a href="#packages" class="hidden xl:inline-flex bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-4 py-2.5 rounded-lg shadow-lg hover:shadow-brand-gold/30 hover:brightness-110 transition duration-300 text-xs 2xl:text-sm items-center gap-1.5 whitespace-nowrap shrink-0">
+            <i class="fa-solid fa-kaaba shrink-0"></i> <span>প্যাকেজ বুকিং</span>
           </a>
 
           <!-- Mobile / Half-Screen Menu Toggle Button -->
-          <button id="mobileMenuBtn" aria-label="মেনু খুলুন" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-brand-gold hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm shrink-0">
-            <i id="menuIcon" class="fa-solid fa-bars text-lg"></i>
+          <button id="mobileMenuBtn" aria-label="মেনু খুলুন" class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-brand-gold hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm shrink-0">
+            <i id="menuIcon" class="fa-solid fa-bars text-base sm:text-lg shrink-0"></i>
           </button>
         </div>
       </div>
     </div>
 
     <!-- Mobile Nav Menu Drawer -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-gradient-to-b from-brand-navy to-brand-dark border-t border-slate-800 px-4 py-5 space-y-4 shadow-2xl transition-all duration-300">
+    <div id="mobileMenu" class="hidden xl:hidden bg-gradient-to-b from-brand-navy to-brand-dark border-t border-slate-800 px-4 py-5 space-y-4 shadow-2xl transition-all duration-300">
       <div class="grid grid-cols-2 gap-2 text-xs">
         <a href="#hero" onclick="closeMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-brand-gold font-medium">
-          <i class="fa-solid fa-house text-brand-gold"></i> মূলপাতা
+          <i class="fa-solid fa-house text-brand-gold shrink-0"></i> <span>মূলপাতা</span>
         </a>
         <a href="#packages" onclick="closeMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-slate-200 hover:text-brand-gold font-medium">
-          <i class="fa-solid fa-kaaba text-brand-tealLight"></i> উমরাহ প্যাকেজ
+          <i class="fa-solid fa-kaaba text-brand-tealLight shrink-0"></i> <span>উমরাহ প্যাকেজ</span>
         </a>
         <a href="#hajj" onclick="closeMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-amber-300 font-semibold">
-          <i class="fa-solid fa-campground text-brand-gold"></i> হজ ২০২৭
+          <i class="fa-solid fa-campground text-brand-gold shrink-0"></i> <span>হজ ২০২৭</span>
         </a>
         <a href="#services" onclick="closeMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-slate-200 hover:text-brand-gold font-medium">
-          <i class="fa-solid fa-briefcase text-brand-tealLight"></i> আমাদের সেবা
+          <i class="fa-solid fa-briefcase text-brand-tealLight shrink-0"></i> <span>আমাদের সেবা</span>
         </a>
         <a href="#ziyarah" onclick="closeMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-slate-200 hover:text-brand-gold font-medium">
-          <i class="fa-solid fa-map-location-dot text-brand-gold"></i> জিয়ারত গাইড
+          <i class="fa-solid fa-map-location-dot text-brand-gold shrink-0"></i> <span>জিয়ারত গাইড</span>
         </a>
         <a href="#why-us" onclick="closeMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-slate-200 hover:text-brand-gold font-medium">
-          <i class="fa-solid fa-shield-halved text-brand-tealLight"></i> কেন আমরা
+          <i class="fa-solid fa-shield-halved text-brand-tealLight shrink-0"></i> <span>কেন আমরা</span>
         </a>
         <a href="#faq" onclick="closeMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-slate-200 hover:text-brand-gold font-medium">
-          <i class="fa-solid fa-circle-question text-brand-gold"></i> প্রশ্নোত্তর
+          <i class="fa-solid fa-circle-question text-brand-gold shrink-0"></i> <span>প্রশ্নোত্তর</span>
         </a>
         <a href="#contact" onclick="closeMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-slate-200 hover:text-brand-gold font-medium">
-          <i class="fa-solid fa-phone text-brand-tealLight"></i> যোগাযোগ
+          <i class="fa-solid fa-phone text-brand-tealLight shrink-0"></i> <span>যোগাযোগ</span>
         </a>
       </div>
 
@@ -932,21 +957,21 @@
         <!-- Mobile Theme Toggle -->
         <button onclick="toggleTheme()" class="w-full flex items-center justify-between py-2 px-3 rounded-xl bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-medium">
           <span class="flex items-center gap-2">
-            <i id="mobileThemeIcon" class="fa-solid fa-sun text-amber-400"></i>
+            <i id="mobileThemeIcon" class="fa-solid fa-sun text-amber-400 shrink-0"></i>
             <span>থিম পরিবর্তন করুন</span>
           </span>
-          <span id="themeModeLabel" class="text-[11px] px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-brand-gold font-semibold">ডার্ক মোড</span>
+          <span id="themeModeLabel" class="text-[11px] px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-brand-gold font-semibold shrink-0">ডার্ক মোড</span>
         </button>
 
         <a href="#packages" onclick="closeMobileMenu()" class="w-full text-center bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold py-3 rounded-xl shadow-lg text-xs flex items-center justify-center gap-2">
-          <i class="fa-solid fa-kaaba"></i> প্যাকেজ বুকিং করুন
+          <i class="fa-solid fa-kaaba shrink-0"></i> <span>প্যাকেজ বুকিং করুন</span>
         </a>
         <div class="grid grid-cols-2 gap-2 pt-1">
           <a href="tel:+8801719161547" class="text-center py-2 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 font-medium text-[11px] flex items-center justify-center gap-1.5">
-            <i class="fa-solid fa-phone text-brand-gold"></i> কল করুন
+            <i class="fa-solid fa-phone text-brand-gold shrink-0"></i> <span>কল করুন</span>
           </a>
           <a href="https://wa.me/8801719161547?text=আসসালামু%20আলাইকুম,%20আমি%20রওজায়ে%20আতহার%20ট্রাভেলস-এর%20প্যাকেজ%20সম্পর্কে%20জানতে%20চাই" target="_blank" class="text-center py-2 px-3 rounded-xl bg-emerald-600 text-white font-medium text-[11px] flex items-center justify-center gap-1.5">
-            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+            <i class="fa-brands fa-whatsapp text-sm shrink-0"></i> <span>WhatsApp</span>
           </a>
         </div>
       </div>
@@ -981,15 +1006,15 @@
           <!-- Core Feature Bullets -->
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs sm:text-sm">
             <div class="flex items-center gap-2 text-slate-300 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
-              <i class="fa-solid fa-hotel text-brand-gold"></i>
+              <i class="fa-solid fa-hotel text-brand-gold shrink-0"></i>
               <span>হারামের কাছে ৫★/৪★ হোটেল</span>
             </div>
             <div class="flex items-center gap-2 text-slate-300 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
-              <i class="fa-solid fa-user-graduate text-brand-tealLight"></i>
+              <i class="fa-solid fa-user-graduate text-brand-tealLight shrink-0"></i>
               <span>বিজ্ঞ আলেম দ্বারা গাইডেন্স</span>
             </div>
             <div class="flex items-center gap-2 text-slate-300 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 col-span-2 sm:col-span-1">
-              <i class="fa-solid fa-plane-departure text-brand-gold"></i>
+              <i class="fa-solid fa-plane-departure text-brand-gold shrink-0"></i>
               <span>ডিরেক্ট ফ্লাইট ও এসি বাস</span>
             </div>
           </div>
@@ -997,10 +1022,10 @@
           <!-- Hero CTAs -->
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
             <a href="#packages" class="bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-7 py-3.5 rounded-xl shadow-xl hover:shadow-brand-gold/40 hover:scale-105 transition duration-300 text-base flex items-center gap-2">
-              <i class="fa-solid fa-list-check"></i> উমরাহ প্যাকেজগুলো দেখুন
+              <i class="fa-solid fa-list-check shrink-0"></i> <span>উমরাহ প্যাকেজগুলো দেখুন</span>
             </a>
             <a href="https://wa.me/8801719161547?text=আসসালামু%20আলাইকুম,%20আমি%20উমরাহ%20প্যাকেজ%20সম্পর্কে%20আলোচনা%20করতে%20চাই" target="_blank" class="whatsapp-hero-btn bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-600/30 hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-300 text-base flex items-center gap-2.5 border border-emerald-400/40">
-              <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+              <i class="fa-brands fa-whatsapp text-2xl text-white shrink-0"></i>
               <span>সরাসরি কথা বলুন</span>
             </a>
           </div>
@@ -1008,13 +1033,13 @@
           <!-- Trust Badges -->
           <div class="pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-slate-400 text-xs">
             <div class="flex items-center gap-1.5">
-              <i class="fa-solid fa-shield-halved text-brand-gold"></i> ১০০% সরকারি অনুমোদিত
+              <i class="fa-solid fa-shield-halved text-brand-gold shrink-0"></i> <span>১০০% সরকারি অনুমোদিত</span>
             </div>
             <div class="flex items-center gap-1.5">
-              <i class="fa-solid fa-hand-holding-dollar text-brand-gold"></i> গোপন কোনো চার্জ নেই
+              <i class="fa-solid fa-hand-holding-dollar text-brand-gold shrink-0"></i> <span>গোপন কোনো চার্জ নেই</span>
             </div>
             <div class="flex items-center gap-1.5">
-              <i class="fa-solid fa-headset text-brand-gold"></i> ২৪/৭ মক্কা-মদিনা সাপোর্ট
+              <i class="fa-solid fa-headset text-brand-gold shrink-0"></i> <span>২৪/৭ মক্কা-মদিনা সাপোর্ট</span>
             </div>
           </div>
         </div>
@@ -1030,7 +1055,7 @@
 
             <div class="text-center mb-6">
               <div class="inline-block p-3 rounded-full bg-slate-900 border border-brand-gold/30 mb-3">
-                <i class="fa-solid fa-mosque text-2xl text-brand-gold"></i>
+                <i class="fa-solid fa-mosque text-2xl text-brand-gold shrink-0"></i>
               </div>
               <h3 class="text-xl font-bold text-white font-bengali">কাস্টমাইজড উমরাহ অফার খুঁজুন</h3>
               <p class="text-slate-400 text-xs mt-1">আপনার পছন্দের তারিখ ও বাজেট অনুযায়ী সেরা অফারটি বেছে নিন</p>
@@ -1081,12 +1106,12 @@
 
               <button type="submit" class="w-full bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold py-3 rounded-xl hover:brightness-110 transition shadow-lg text-sm mt-2 flex items-center justify-center gap-2">
                 <span>ফ্রি পরামর্শ ও কোটেশন পান</span>
-                <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-right shrink-0"></i>
               </button>
             </form>
 
-            <div class="mt-4 text-center text-[11px] text-slate-400">
-              <i class="fa-solid fa-lock text-brand-tealLight"></i> আপনার তথ্য সম্পূর্ণ সুরক্ষিত এবং গোপন রাখা হবে।
+            <div class="mt-4 text-center text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-lock text-brand-tealLight shrink-0"></i> <span>আপনার তথ্য সম্পূর্ণ সুরক্ষিত এবং গোপন রাখা হবে।</span>
             </div>
 
           </div>
@@ -1181,27 +1206,34 @@
                 <span class="text-[11px] bg-emerald-950/90 text-emerald-300 border border-emerald-800 px-2.5 py-0.5 rounded whitespace-nowrap">বাজেটবান্ধব</span>
               </div>
 
-              <ul class="space-y-2.5 text-xs sm:text-[13.5px] text-slate-300 flex-1 font-medium">
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> মক্কা: ৭০০-৮০০ মি. মানসম্মত হোটেল
+              <ul class="space-y-2.5 text-xs sm:text-[13px] text-slate-300 flex-1 font-medium">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>মক্কা: ৭০০-৮০০ মি. মানসম্মত হোটেল</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> মদিনা: ৪০০-৫০০ মি. সেন্ট্রাল এরিয়া
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>মদিনা: ৪০০-৫০০ মি. সেন্ট্রাল এরিয়া</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> সৌদি উমরাহ ই-ভিসা ও ট্রাভেল ইনস্যুরেন্স
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>সৌদি উমরাহ ই-ভিসা ও ট্রাভেল ইনস্যুরেন্স</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> রিটার্ন এয়ার টিকিট (ট্রানজিট/ননস্টপ)
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>রিটার্ন এয়ার টিকিট (ট্রানজিট/ননস্টপ)</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> আরামদায়ক এসি বাস ট্রান্সপোর্ট
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>আরামদায়ক এসি বাস ট্রান্সপোর্ট</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> মক্কা ও মদিনার ঐতিহাসিক স্থান জিয়ারত
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>মক্কা ও মদিনার ঐতিহাসিক স্থান জিয়ারত</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> বিজ্ঞ আলেম দ্বারা উমরাহ প্রশিক্ষণ
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>বিজ্ঞ আলেম দ্বারা উমরাহ প্রশিক্ষণ</span>
                 </li>
               </ul>
             </div>
@@ -1209,7 +1241,7 @@
 
           <div class="p-4 sm:p-5 pt-0 mt-auto">
             <button onclick="openBookingModal('ইকোনমি উমরাহ প্যাকেজ', '৳ ১,৩৫,০০০')" class="w-full bg-slate-800 hover:bg-brand-gold hover:text-slate-950 text-slate-200 font-semibold py-2.5 rounded-xl border border-slate-700 transition duration-300 text-xs flex items-center justify-center gap-2">
-              <i class="fa-regular fa-calendar-check"></i> বুকিং ও বিস্তারিত
+              <i class="fa-regular fa-calendar-check shrink-0"></i> <span>বুকিং ও বিস্তারিত</span>
             </button>
           </div>
         </div>
@@ -1239,27 +1271,34 @@
                 <span class="text-[11px] bg-teal-950/90 text-teal-300 border border-teal-700 px-2.5 py-0.5 rounded whitespace-nowrap">জনপ্রিয় চয়েস</span>
               </div>
 
-              <ul class="space-y-2.5 text-xs sm:text-[13.5px] text-slate-300 flex-1 font-medium">
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> মক্কা: ৩৫০-৪৫০ মি. ৩★/৪★ হোটেল
+              <ul class="space-y-2.5 text-xs sm:text-[13px] text-slate-300 flex-1 font-medium">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>মক্কা: ৩৫০-৪৫০ মি. ৩★/৪★ হোটেল</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> মদিনা: ২০০-২৫০ মি. সেন্ট্রাল মার্কাজিয়া
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>মদিনা: ২০০-২৫০ মি. সেন্ট্রাল মার্কাজিয়া</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> সৌদি উমরাহ ই-ভিসা ও পূর্ণাঙ্গ ইনস্যুরেন্স
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>সৌদি উমরাহ ই-ভিসা ও পূর্ণাঙ্গ ইনস্যুরেন্স</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> রিটার্ন এয়ার টিকিট (স্ট্যান্ডার্ড এয়ারলাইন্স)
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>রিটার্ন এয়ার টিকিট (স্ট্যান্ডার্ড এয়ারলাইন্স)</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> হারামাইন বুলেট ট্রেন / লাক্সারি এসি বাস
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>হারামাইন বুলেট ট্রেন / লাক্সারি এসি বাস</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> মক্কা ও মদিনার পূর্ণ ঐতিহাসিক জিয়ারত
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>মক্কা ও মদিনার পূর্ণ ঐতিহাসিক জিয়ারত</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> দেশীয় খাবার সুবিধা ও সার্বক্ষণিক গাইড
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>দেশীয় খাবার সুবিধা ও সার্বক্ষণিক গাইড</span>
                 </li>
               </ul>
             </div>
@@ -1267,7 +1306,7 @@
 
           <div class="p-4 sm:p-5 pt-0 mt-auto">
             <button onclick="openBookingModal('স্ট্যান্ডার্ড ডিলাক্স উমরাহ', '৳ ২,০০,০০০')" class="w-full bg-slate-800 hover:bg-brand-tealLight hover:text-slate-950 text-slate-200 font-semibold py-2.5 rounded-xl border border-slate-700 transition duration-300 text-xs flex items-center justify-center gap-2">
-              <i class="fa-regular fa-calendar-check"></i> বুকিং ও বিস্তারিত
+              <i class="fa-regular fa-calendar-check shrink-0"></i> <span>বুকিং ও বিস্তারিত</span>
             </button>
           </div>
         </div>
@@ -1302,27 +1341,34 @@
                 <span class="text-[11px] bg-amber-950/90 text-amber-300 border border-amber-700 px-2.5 py-0.5 rounded whitespace-nowrap">৫★ ভিআইপি</span>
               </div>
 
-              <ul class="space-y-2.5 text-xs sm:text-[13.5px] text-slate-300 flex-1 font-medium">
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-star text-brand-gold shrink-0"></i> মক্কা: হারাম চত্বরে ৫★ ক্লক টাওয়ার
+              <ul class="space-y-2.5 text-xs sm:text-[13px] text-slate-300 flex-1 font-medium">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-star text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>মক্কা: হারাম চত্বরে ৫★ ক্লক টাওয়ার</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-star text-brand-gold shrink-0"></i> মদিনা: মসজিদে নববীর ১০০ মি. মধ্যে ৫★
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-star text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>মদিনা: মসজিদে নববীর ১০০ মি. মধ্যে ৫★</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> ডিরেক্ট ফ্লাইট (Saudia / Biman)
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>ডিরেক্ট ফ্লাইট (Saudia / Biman)</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> বুলেট ট্রেন বিজনেস ক্লাস ও প্রাইভেট GMC
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>বুলেট ট্রেন বিজনেস ক্লাস ও প্রাইভেট GMC</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> তিন বেলা সুস্বাদু দেশীয় বুফে খাবার
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>তিন বেলা সুস্বাদু দেশীয় বুফে খাবার</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> ভিআইপি এক্সক্লুসিভ জিয়ারত ও প্রাইভেট গাইড
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>ভিআইপি এক্সক্লুসিভ জিয়ারত ও প্রাইভেট গাইড</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-gold shrink-0"></i> বিশেষ লাগেজ ও সার্বক্ষণিক প্রটোকল সেবা
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-gold shrink-0 text-xs mt-1"></i>
+                  <span>বিশেষ লাগেজ ও সার্বক্ষণিক প্রটোকল সেবা</span>
                 </li>
               </ul>
             </div>
@@ -1330,7 +1376,7 @@
 
           <div class="p-4 sm:p-5 pt-0 mt-auto">
             <button onclick="openBookingModal('প্রিমিয়াম এক্সিকিউটিভ ভিআইপি', '৳ ২,৪০,০০০')" class="w-full bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold py-2.5 rounded-xl hover:brightness-110 transition duration-300 text-xs flex items-center justify-center gap-2 shadow-lg">
-              <i class="fa-solid fa-crown"></i> ভিআইপি বুকিং নির্বাচন করুন
+              <i class="fa-solid fa-crown shrink-0"></i> <span>ভিআইপি বুকিং নির্বাচন করুন</span>
             </button>
           </div>
         </div>
@@ -1360,27 +1406,34 @@
                 <span class="text-[11px] bg-teal-950/90 text-teal-300 border border-teal-800 px-2.5 py-0.5 rounded whitespace-nowrap">রমজান স্পেশাল</span>
               </div>
 
-              <ul class="space-y-2.5 text-xs sm:text-[13.5px] text-slate-300 flex-1 font-medium">
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> মক্কা ও মদিনায় সুবিধাজনক হোটেল
+              <ul class="space-y-2.5 text-xs sm:text-[13px] text-slate-300 flex-1 font-medium">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>মক্কা ও মদিনায় সুবিধাজনক হোটেল</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> প্রথম ১৫ দিন / শেষ ১০ দিন / পুরো মাস
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>প্রথম ১৫ দিন / শেষ ১০ দিন / পুরো মাস</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> হারামে লাইলাতুল কদর ও নফল ইবাদত
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>হারামে লাইলাতুল কদর ও নফল ইবাদত</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> সাহরি ও ইফতারের বিশেষ বাঙালি ফুড
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>সাহরি ও ইফতারের বিশেষ বাঙালি ফুড</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> মসজিদে নববীতে ইতেকাফ সহায়তা
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>মসজিদে নববীতে ইতেকাফ সহায়তা</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> সরাসরি ফ্লাইট ও নির্ধারিত লাগেজ সুবিধা
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>সরাসরি ফ্লাইট ও নির্ধারিত লাগেজ সুবিধা</span>
                 </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> অভিজ্ঞ মুফতি সাহেবের সার্বিক গাইড
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-brand-tealLight shrink-0 text-xs mt-1"></i>
+                  <span>অভিজ্ঞ মুফতি সাহেবের সার্বিক গাইড</span>
                 </li>
               </ul>
             </div>
@@ -1388,7 +1441,7 @@
 
           <div class="p-4 sm:p-5 pt-0 mt-auto">
             <button onclick="openBookingModal('মাহে রমজান উমরাহ প্যাকেজ', '৳ ১,৮৫,০০০')" class="w-full bg-slate-800 hover:bg-brand-tealLight hover:text-slate-950 text-slate-200 font-semibold py-2.5 rounded-xl border border-slate-700 transition duration-300 text-xs flex items-center justify-center gap-2">
-              <i class="fa-solid fa-moon"></i> রমজান প্যাকেজ আবেদন
+              <i class="fa-solid fa-moon shrink-0"></i> <span>রমজান প্যাকেজ আবেদন</span>
             </button>
           </div>
         </div>
@@ -1399,7 +1452,7 @@
       <div class="mt-12 p-6 rounded-2xl bg-gradient-to-r from-brand-navy via-brand-card to-slate-900 border border-brand-gold/30 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/40 flex items-center justify-center text-brand-gold text-2xl shrink-0">
-            <i class="fa-solid fa-sliders"></i>
+            <i class="fa-solid fa-sliders shrink-0"></i>
           </div>
           <div>
             <h4 class="text-white font-bold text-base">আপনার নিজের মতো করে দিন ও হোটেল কাস্টমাইজ করতে চান?</h4>
@@ -1442,7 +1495,7 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex items-start gap-3">
-              <i class="fa-solid fa-campground text-brand-gold text-base mt-0.5"></i>
+              <i class="fa-solid fa-campground text-brand-gold text-base mt-0.5 shrink-0"></i>
               <div>
                 <strong class="text-white block">মিনায় উন্নত তাঁবু (Zone A/B)</strong>
                 <span class="text-slate-400">জ্যামারাতের নিকটবর্তী শীতাতপ নিয়ন্ত্রিত তাঁবু ব্যবস্থা।</span>
@@ -1450,7 +1503,7 @@
             </div>
 
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex items-start gap-3">
-              <i class="fa-solid fa-utensils text-brand-tealLight text-base mt-0.5"></i>
+              <i class="fa-solid fa-utensils text-brand-tealLight text-base mt-0.5 shrink-0"></i>
               <div>
                 <strong class="text-white block">সুস্বাদু পুষ্টিকর তিন বেলা খাবার</strong>
                 <span class="text-slate-400">অভিজ্ঞ বাঙালি বাবুর্চি দ্বারা রান্না করা টাটকা খাবার।</span>
@@ -1458,7 +1511,7 @@
             </div>
 
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex items-start gap-3">
-              <i class="fa-solid fa-book-quran text-brand-gold text-base mt-0.5"></i>
+              <i class="fa-solid fa-book-quran text-brand-gold text-base mt-0.5 shrink-0"></i>
               <div>
                 <strong class="text-white block">হজ প্রশিক্ষণ কর্মশালা</strong>
                 <span class="text-slate-400">দেশ ত্যাগের আগে ঢাকায় ব্যবহারিক হজ প্রশিক্ষণ ও বই বিতরণ।</span>
@@ -1466,7 +1519,7 @@
             </div>
 
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex items-start gap-3">
-              <i class="fa-solid fa-stethoscope text-brand-tealLight text-base mt-0.5"></i>
+              <i class="fa-solid fa-stethoscope text-brand-tealLight text-base mt-0.5 shrink-0"></i>
               <div>
                 <strong class="text-white block">চিকিৎসা ও জরুরি সেবা</strong>
                 <span class="text-slate-400">হজ কাফেলায় সার্বক্ষণিক প্রাথমিক চিকিৎসা ও ওষুধের ব্যবস্থা।</span>
@@ -1476,10 +1529,10 @@
 
           <div class="pt-2 flex flex-wrap gap-4">
             <button onclick="openBookingModal('হজ ২০২৭ প্রি-রেজিস্ট্রেশন', 'অগ্রিম সিরিয়াল ও প্যাকেজ বুকিং')" class="bg-brand-gold hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs flex items-center gap-2 shadow-lg transition">
-              <i class="fa-solid fa-file-signature"></i> হজ ২০২৭ প্রি-রেজিস্ট্রেশন করুন
+              <i class="fa-solid fa-file-signature shrink-0"></i> <span>হজ ২০২৭ প্রি-রেজিস্ট্রেশন করুন</span>
             </button>
             <a href="tel:+8801719161547" class="border border-slate-700 hover:border-brand-gold text-slate-300 hover:text-white px-5 py-3 rounded-xl text-xs flex items-center gap-2 transition font-sans font-medium tracking-wide">
-              <i class="fa-solid fa-phone text-brand-gold"></i> +880 1719-16 15 47
+              <i class="fa-solid fa-phone text-brand-gold shrink-0"></i> <span>+880 1719-16 15 47</span>
             </a>
           </div>
 
@@ -1507,8 +1560,8 @@
         
         <!-- Service 1 -->
         <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 hover:border-brand-gold/50 transition card-hover">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-xl mb-4">
-            <i class="fa-solid fa-passport"></i>
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-xl mb-4 shrink-0">
+            <i class="fa-solid fa-passport shrink-0"></i>
           </div>
           <h3 class="text-lg font-bold text-white font-bengali">সৌদি উমরাহ ও ভিজিট ভিসা</h3>
           <p class="text-slate-400 text-xs leading-relaxed mt-2">
@@ -1518,8 +1571,8 @@
 
         <!-- Service 2 -->
         <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 hover:border-brand-gold/50 transition card-hover">
-          <div class="w-12 h-12 rounded-xl bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-tealLight text-xl mb-4">
-            <i class="fa-solid fa-plane"></i>
+          <div class="w-12 h-12 rounded-xl bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-tealLight text-xl mb-4 shrink-0">
+            <i class="fa-solid fa-plane shrink-0"></i>
           </div>
           <h3 class="text-lg font-bold text-white font-bengali">রিটার্ন এয়ার টিকিট বুকিং</h3>
           <p class="text-slate-400 text-xs leading-relaxed mt-2">
@@ -1529,8 +1582,8 @@
 
         <!-- Service 3 -->
         <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 hover:border-brand-gold/50 transition card-hover">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-xl mb-4">
-            <i class="fa-solid fa-hotel"></i>
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-xl mb-4 shrink-0">
+            <i class="fa-solid fa-hotel shrink-0"></i>
           </div>
           <h3 class="text-lg font-bold text-white font-bengali">মক্কা ও মদিনায় হোটেল বুকিং</h3>
           <p class="text-slate-400 text-xs leading-relaxed mt-2">
@@ -1540,8 +1593,8 @@
 
         <!-- Service 4 -->
         <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 hover:border-brand-gold/50 transition card-hover">
-          <div class="w-12 h-12 rounded-xl bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-tealLight text-xl mb-4">
-            <i class="fa-solid fa-train-subway"></i>
+          <div class="w-12 h-12 rounded-xl bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-tealLight text-xl mb-4 shrink-0">
+            <i class="fa-solid fa-train-subway shrink-0"></i>
           </div>
           <h3 class="text-lg font-bold text-white font-bengali">হারামাইন হাই-স্পিড ট্রেন ও কার</h3>
           <p class="text-slate-400 text-xs leading-relaxed mt-2">
@@ -1551,8 +1604,8 @@
 
         <!-- Service 5 -->
         <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 hover:border-brand-gold/50 transition card-hover">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-xl mb-4">
-            <i class="fa-solid fa-map-location-dot"></i>
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-xl mb-4 shrink-0">
+            <i class="fa-solid fa-map-location-dot shrink-0"></i>
           </div>
           <h3 class="text-lg font-bold text-white font-bengali">ঐতিহাসিক জিয়ারত ট্যুর</h3>
           <p class="text-slate-400 text-xs leading-relaxed mt-2">
@@ -1562,8 +1615,8 @@
 
         <!-- Service 6 -->
         <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 hover:border-brand-gold/50 transition card-hover">
-          <div class="w-12 h-12 rounded-xl bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-tealLight text-xl mb-4">
-            <i class="fa-solid fa-earth-americas"></i>
+          <div class="w-12 h-12 rounded-xl bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-tealLight text-xl mb-4 shrink-0">
+            <i class="fa-solid fa-earth-americas shrink-0"></i>
           </div>
           <h3 class="text-lg font-bold text-white font-bengali">হালাল হলিডে ও আন্তর্জাতিক ট্যুর</h3>
           <p class="text-slate-400 text-xs leading-relaxed mt-2">
@@ -1584,7 +1637,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center max-w-2xl mx-auto mb-14">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-amber-500/10 border border-amber-500/30 text-brand-gold process-badge">
-          <i class="fa-solid fa-route text-brand-gold"></i> সহজ ও স্বচ্ছ প্রক্রিয়া
+          <i class="fa-solid fa-route text-brand-gold shrink-0"></i> <span>সহজ ও স্বচ্ছ প্রক্রিয়া</span>
         </span>
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-3 font-bengali process-heading">
           মাত্র ৪টি সহজ ধাপে শুরু করুন আপনার <span class="gold-gradient-text">পবিত্র সফর</span>
@@ -1601,7 +1654,7 @@
           <div class="w-full">
             <div class="flex items-center justify-between w-full mb-4">
               <span class="step-badge text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">ধাপ ০১</span>
-              <i class="fa-solid fa-comments text-amber-400 text-sm"></i>
+              <i class="fa-solid fa-comments text-amber-400 text-sm shrink-0"></i>
             </div>
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-black flex items-center justify-center text-xl shadow-lg shadow-amber-500/25 mb-4 mx-auto group-hover:scale-110 transition-transform">
               ১
@@ -1619,7 +1672,7 @@
           <div class="w-full">
             <div class="flex items-center justify-between w-full mb-4">
               <span class="step-badge text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">ধাপ ০২</span>
-              <i class="fa-solid fa-passport text-teal-400 text-sm"></i>
+              <i class="fa-solid fa-passport text-teal-400 text-sm shrink-0"></i>
             </div>
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-500 via-teal-400 to-emerald-400 text-slate-950 font-black flex items-center justify-center text-xl shadow-lg shadow-teal-500/25 mb-4 mx-auto group-hover:scale-110 transition-transform">
               ২
@@ -1637,7 +1690,7 @@
           <div class="w-full">
             <div class="flex items-center justify-between w-full mb-4">
               <span class="step-badge text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">ধাপ ০৩</span>
-              <i class="fa-solid fa-suitcase-rolling text-amber-400 text-sm"></i>
+              <i class="fa-solid fa-suitcase-rolling text-amber-400 text-sm shrink-0"></i>
             </div>
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-black flex items-center justify-center text-xl shadow-lg shadow-amber-500/25 mb-4 mx-auto group-hover:scale-110 transition-transform">
               ৩
@@ -1655,7 +1708,7 @@
           <div class="w-full">
             <div class="flex items-center justify-between w-full mb-4">
               <span class="step-badge text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">ধাপ ০৪</span>
-              <i class="fa-solid fa-kaaba text-teal-400 text-sm"></i>
+              <i class="fa-solid fa-kaaba text-teal-400 text-sm shrink-0"></i>
             </div>
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-500 via-teal-400 to-emerald-400 text-slate-950 font-black flex items-center justify-center text-xl shadow-lg shadow-teal-500/25 mb-4 mx-auto group-hover:scale-110 transition-transform">
               ৪
@@ -1751,7 +1804,7 @@
             
             <div class="flex items-start gap-4">
               <div class="w-9 h-9 rounded-lg bg-brand-gold/10 border border-brand-gold/40 flex items-center justify-center text-brand-gold text-sm shrink-0 mt-1">
-                <i class="fa-solid fa-handshake"></i>
+                <i class="fa-solid fa-handshake shrink-0"></i>
               </div>
               <div>
                 <h4 class="text-white font-bold text-sm">সম্পূর্ণ স্বচ্ছতা ও কোনো গোপন খরচ নেই</h4>
@@ -1761,7 +1814,7 @@
 
             <div class="flex items-start gap-4">
               <div class="w-9 h-9 rounded-lg bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-tealLight text-sm shrink-0 mt-1">
-                <i class="fa-solid fa-person-praying"></i>
+                <i class="fa-solid fa-person-praying shrink-0"></i>
               </div>
               <div>
                 <h4 class="text-white font-bold text-sm">শরিয়াহ সম্মত সঠিক নিয়মে উমরাহ সম্পাদন</h4>
@@ -1771,7 +1824,7 @@
 
             <div class="flex items-start gap-4">
               <div class="w-9 h-9 rounded-lg bg-brand-gold/10 border border-brand-gold/40 flex items-center justify-center text-brand-gold text-sm shrink-0 mt-1">
-                <i class="fa-solid fa-person-walking-luggage"></i>
+                <i class="fa-solid fa-person-walking-luggage shrink-0"></i>
               </div>
               <div>
                 <h4 class="text-white font-bold text-sm">বয়োজ্যেষ্ঠ ও পরিবারের জন্য বিশেষ নজরদারি</h4>
@@ -1781,7 +1834,7 @@
 
             <div class="flex items-start gap-4">
               <div class="w-9 h-9 rounded-lg bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-tealLight text-sm shrink-0 mt-1">
-                <i class="fa-solid fa-award"></i>
+                <i class="fa-solid fa-award shrink-0"></i>
               </div>
               <div>
                 <h4 class="text-white font-bold text-sm">হজ লাইসেন্সপ্রাপ্ত ও নির্ভরযোগ্য প্রতিষ্ঠান</h4>
@@ -1795,7 +1848,7 @@
         <div class="lg:col-span-6">
           <div class="bg-brand-card p-8 rounded-3xl border border-brand-gold/30 shadow-2xl relative">
             <h3 class="text-xl font-bold text-white mb-6 font-bengali flex items-center gap-2">
-              <i class="fa-solid fa-comments text-brand-gold"></i> হাজিদের অভিজ্ঞতার কথা
+              <i class="fa-solid fa-comments text-brand-gold shrink-0"></i> <span>হাজিদের অভিজ্ঞতার কথা</span>
             </h3>
 
             <div class="space-y-6">
@@ -1848,7 +1901,7 @@
             <div class="mt-6 text-center">
               <a href="https://wa.me/8801719161547?text=আসসালামু%20আলাইকুম,%20আমি%20হজ-উমরাহ%20প্যাকেজ%20সম্পর্কে%20জানতে%20চাই" target="_blank" class="text-xs text-brand-gold hover:underline font-semibold flex items-center justify-center gap-1">
                 <span>আমাদের ফেসবুক ও গুগলে আরও ২০০+ রিভিউ দেখুন</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] shrink-0"></i>
               </a>
             </div>
 
@@ -1877,7 +1930,7 @@
         <div class="border border-slate-800 rounded-xl overflow-hidden bg-brand-card">
           <button onclick="toggleFaq(1)" class="w-full text-left p-4 sm:p-5 font-bold text-white text-sm sm:text-base flex justify-between items-center hover:text-brand-gold transition">
             <span>উমরাহ ভিসা ও রেজিস্ট্রেশনের জন্য কী কী কাগজপত্র প্রয়োজন?</span>
-            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform"></i>
+            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform shrink-0 ml-2"></i>
           </button>
           <div id="faq-content-1" class="hidden px-4 pb-5 sm:px-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
             উমরাহ ভিসার জন্য সাধারণত প্রয়োজন হয়:
@@ -1894,7 +1947,7 @@
         <div class="border border-slate-800 rounded-xl overflow-hidden bg-brand-card">
           <button onclick="toggleFaq(2)" class="w-full text-left p-4 sm:p-5 font-bold text-white text-sm sm:text-base flex justify-between items-center hover:text-brand-gold transition">
             <span>প্যাকেজের মূল্য পরিশোধের পদ্ধতি এবং কিস্তির সুযোগ আছে কি?</span>
-            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform"></i>
+            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform shrink-0 ml-2"></i>
           </button>
           <div id="faq-content-2" class="hidden px-4 pb-5 sm:px-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
             হ্যাঁ, বুকিংয়ের সময় একটি নির্দিষ্ট পরিমাণ বায়না জমা দিয়ে টিকিট ও ভিসা প্রসেস করা হয়। অবশিষ্ট অর্থ যাত্রার পূর্বে সুবিধাজনক ধাপে পরিশোধ করতে পারবেন। নির্দিষ্ট ব্যাংকের ক্রেডিট কার্ডের মাধ্যমে ইএমআই (EMI) সুবিধাও উপলব্ধ রয়েছে।
@@ -1905,7 +1958,7 @@
         <div class="border border-slate-800 rounded-xl overflow-hidden bg-brand-card">
           <button onclick="toggleFaq(3)" class="w-full text-left p-4 sm:p-5 font-bold text-white text-sm sm:text-base flex justify-between items-center hover:text-brand-gold transition">
             <span>মহিলাদের উমরাহ পালনে কি মাহরাম বাধ্যতামূলক?</span>
-            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform"></i>
+            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform shrink-0 ml-2"></i>
           </button>
           <div id="faq-content-3" class="hidden px-4 pb-5 sm:px-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
             সৌদি সরকারের বর্তমান নিয়ম অনুযায়ী ৪৫ বছর বা তদূর্ধ্ব বয়সী মহিলারা মাহরাম ছাড়াও বিশেষ গ্রুপে ভ্রমণ করতে পারেন। বিস্তারিত শরিয়াহ বিধান ও অনুমোদিত নির্দেশিকার জন্য আমাদের বিজ্ঞ আলেমদের সাথে পরামর্শ করতে পারেন।
@@ -1916,7 +1969,7 @@
         <div class="border border-slate-800 rounded-xl overflow-hidden bg-brand-card">
           <button onclick="toggleFaq(4)" class="w-full text-left p-4 sm:p-5 font-bold text-white text-sm sm:text-base flex justify-between items-center hover:text-brand-gold transition">
             <span>হোটেল থেকে হারাম শরীফের প্রকৃত দূরত্ব কতটুকু?</span>
-            <i id="faq-icon-4" class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform"></i>
+            <i id="faq-icon-4" class="fa-solid fa-chevron-down text-xs text-brand-gold transition-transform shrink-0 ml-2"></i>
           </button>
           <div id="faq-content-4" class="hidden px-4 pb-5 sm:px-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
             আমাদের ভিআইপি প্যাকেজে হারাম চত্বরের একেবারে সামনের ৫-স্টার হোটেল (০-৫০ মিটার) নিশ্চিত করা হয়। ইকোনমি প্যাকেজের ক্ষেত্রেও হাঁটার দূরত্বে (৪০০-৭০০ মিটার) মানসম্মত পরিচ্ছন্ন হোটেল রাখা হয় যাতে অতিরিক্ত গাড়ি ভাড়ার প্রয়োজন না হয়।
@@ -1952,7 +2005,7 @@
             <!-- Proprietor Badge -->
             <div class="mt-4 p-3.5 rounded-xl bg-slate-900/90 border border-brand-gold/40 flex items-center gap-3">
               <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold text-lg shrink-0">
-                <i class="fa-solid fa-user-tie"></i>
+                <i class="fa-solid fa-user-tie shrink-0"></i>
               </div>
               <div>
                 <span class="text-[11px] text-brand-gold font-semibold uppercase tracking-wider block">প্রোপ্রাইটার</span>
@@ -1967,7 +2020,7 @@
 
           <div class="space-y-3 text-xs text-slate-300">
             <div class="flex items-start gap-3">
-              <i class="fa-solid fa-location-dot text-brand-gold mt-1 text-sm"></i>
+              <i class="fa-solid fa-location-dot text-brand-gold mt-1 text-sm shrink-0"></i>
               <div>
                 <strong class="text-white block font-medium">অফিসের ঠিকানা:</strong>
                 <a href="https://maps.app.goo.gl/g1xFPWcDEj3agxPP7" target="_blank" class="text-slate-300 hover:text-brand-gold leading-relaxed block transition group">
@@ -1976,13 +2029,13 @@
                   মোহাম্মদপুর, ঢাকা - ১২০৭।
                 </a>
                 <a href="https://maps.app.goo.gl/g1xFPWcDEj3agxPP7" target="_blank" class="text-slate-400 hover:text-brand-gold text-[11px] block mt-0.5 transition">
-                  House No. 122, Road No. 4/A, Swapnadhara Housing, Mohammadpur, Dhaka - 1207 &nbsp;<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  House No. 122, Road No. 4/A, Swapnadhara Housing, Mohammadpur, Dhaka - 1207 &nbsp;<i class="fa-solid fa-arrow-up-right-from-square text-[9px] shrink-0"></i>
                 </a>
               </div>
             </div>
 
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-phone text-brand-gold text-sm"></i>
+              <i class="fa-solid fa-phone text-brand-gold text-sm shrink-0"></i>
               <div>
                 <strong class="text-white">ফোন / হটলাইন:</strong>
                 <div class="flex flex-wrap gap-2 mt-0.5">
@@ -1994,7 +2047,7 @@
             </div>
 
             <div class="flex items-center gap-3">
-              <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i>
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-base shrink-0"></i>
               <div>
                 <strong class="text-white">WhatsApp:</strong>
                 <div class="flex flex-wrap gap-2 mt-0.5">
@@ -2006,17 +2059,17 @@
             </div>
 
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-envelope text-brand-gold text-sm"></i>
+              <i class="fa-solid fa-envelope text-brand-gold text-sm shrink-0"></i>
               <span>ইমেইল: info@rowzayeathartravels.com</span>
             </div>
           </div>
 
           <!-- Social Links -->
           <div class="pt-2 flex items-center gap-3">
-            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-gold hover:text-black text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-gold hover:text-black text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-gold hover:text-black text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://wa.me/8801719161547" target="_blank" class="w-9 h-9 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white flex items-center justify-center transition"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-gold hover:text-black text-slate-300 flex items-center justify-center transition shrink-0"><i class="fa-brands fa-facebook-f shrink-0"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-gold hover:text-black text-slate-300 flex items-center justify-center transition shrink-0"><i class="fa-brands fa-youtube shrink-0"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-gold hover:text-black text-slate-300 flex items-center justify-center transition shrink-0"><i class="fa-brands fa-instagram shrink-0"></i></a>
+            <a href="https://wa.me/8801719161547" target="_blank" class="w-9 h-9 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white flex items-center justify-center transition shrink-0"><i class="fa-brands fa-whatsapp shrink-0"></i></a>
           </div>
         </div>
 
@@ -2062,7 +2115,7 @@
 
               <button type="submit" class="bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-8 py-3 rounded-xl hover:brightness-110 transition shadow-lg text-xs flex items-center gap-2">
                 <span>বার্তা প্রেরণ করুন</span>
-                <i class="fa-solid fa-paper-plane"></i>
+                <i class="fa-solid fa-paper-plane shrink-0"></i>
               </button>
             </form>
           </div>
@@ -2075,7 +2128,7 @@
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
           <div>
             <h4 class="text-lg font-bold text-white font-bengali flex items-center gap-2">
-              <i class="fa-solid fa-map-location-dot text-brand-gold"></i>
+              <i class="fa-solid fa-map-location-dot text-brand-gold shrink-0"></i>
               গুগল ম্যাপে আমাদের অফিস অবস্থান (Orchid Abrar Tower)
             </h4>
             <p class="text-slate-400 text-xs mt-0.5">
@@ -2083,7 +2136,7 @@
             </p>
           </div>
           <a href="https://maps.app.goo.gl/g1xFPWcDEj3agxPP7" target="_blank" class="bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-4 py-2.5 rounded-xl shadow-md hover:brightness-110 transition duration-300 text-xs flex items-center gap-2 shrink-0">
-            <i class="fa-solid fa-diamond-turn-right text-slate-950"></i>
+            <i class="fa-solid fa-diamond-turn-right text-slate-950 shrink-0"></i>
             <span>Google Maps-এ ডিরেকশন পান</span>
           </a>
         </div>
@@ -2122,12 +2175,12 @@
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-3 text-xs font-sans my-auto">
           <a href="tel:+8801719161547" class="footer-phone-link text-slate-200 hover:text-brand-gold transition flex items-center gap-1.5 font-semibold tracking-wide">
-            <i class="fa-solid fa-phone text-brand-gold text-[11px]"></i>
+            <i class="fa-solid fa-phone text-brand-gold text-[11px] shrink-0"></i>
             <span>+880 1719-16 15 47</span>
           </a>
           <span class="hidden sm:inline text-slate-600 footer-phone-sep">|</span>
           <a href="tel:+8801619161547" class="footer-phone-link text-slate-200 hover:text-brand-gold transition flex items-center gap-1.5 font-semibold tracking-wide">
-            <i class="fa-solid fa-phone text-brand-gold text-[11px] sm:hidden"></i>
+            <i class="fa-solid fa-phone text-brand-gold text-[11px] sm:hidden shrink-0"></i>
             <span>+880 1619-16 15 47</span>
           </a>
         </div>
@@ -2147,10 +2200,10 @@
   <!-- Floating Sticky WhatsApp & Call Buttons -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
     <a href="https://wa.me/8801719161547?text=আসসালামু%20আলাইকুম,%20আমি%20রওজায়ে%20আতহার%20ট্রাভেলস-এর%20উমরাহ%20প্যাকেজ%20সম্পর্কে%20জানতে%20চাই" target="_blank" class="w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition duration-300 animate-bounce" title="WhatsApp এ মেসেজ পাঠান">
-      <i class="fa-brands fa-whatsapp"></i>
+      <i class="fa-brands fa-whatsapp shrink-0"></i>
     </a>
     <a href="tel:+8801719161547" class="w-12 h-12 rounded-full bg-brand-gold hover:bg-amber-400 text-slate-950 flex items-center justify-center text-xl shadow-xl hover:scale-105 transition duration-300 sm:hidden" title="সরাসরি কল করুন">
-      <i class="fa-solid fa-phone"></i>
+      <i class="fa-solid fa-phone shrink-0"></i>
     </a>
   </div>
 
@@ -2158,7 +2211,7 @@
   <div id="bookingModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-brand-card border border-brand-gold/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
       <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-        <i class="fa-solid fa-xmark"></i>
+        <i class="fa-solid fa-xmark shrink-0"></i>
       </button>
 
       <div class="text-center mb-6">
