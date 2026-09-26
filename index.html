@@ -87,6 +87,62 @@
       transform: translateY(-6px);
       box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.6), 0 0 20px 0 rgba(197, 155, 109, 0.25);
     }
+    /* Logo Golden Ambient Halo Glow */
+    .logo-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-glow {
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.45) 0%, rgba(217, 119, 6, 0.18) 45%, transparent 70%);
+      filter: blur(8px);
+      opacity: 0.85;
+      transform: scale(0.95);
+      transition: all 0.35s ease;
+    }
+    .logo-wrapper:hover .logo-glow {
+      opacity: 1;
+      transform: scale(1.15);
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.65) 0%, rgba(217, 119, 6, 0.28) 55%, transparent 75%);
+    }
+    .logo-wrapper img {
+      filter: drop-shadow(0 2px 8px rgba(180, 115, 20, 0.4));
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+    .logo-wrapper:hover img {
+      filter: drop-shadow(0 4px 16px rgba(245, 158, 11, 0.65));
+    }
+
+    /* WhatsApp Hero CTA Button */
+    .whatsapp-hero-btn {
+      background: linear-gradient(135deg, #059669 0%, #10b981 50%, #047857 100%) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(110, 231, 183, 0.5) !important;
+      box-shadow: 0 10px 25px -4px rgba(16, 185, 129, 0.35) !important;
+    }
+    .whatsapp-hero-btn:hover {
+      background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #059669 100%) !important;
+      box-shadow: 0 14px 30px -4px rgba(16, 185, 129, 0.55) !important;
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    /* Step-by-Step Process Section */
+    .process-section {
+      background: linear-gradient(180deg, #090e17 0%, #0f172a 100%);
+    }
+    .process-section .step-card {
+      background: rgba(19, 30, 46, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(51, 65, 85, 0.7);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .process-section .step-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(197, 155, 109, 0.6);
+      box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.4), 0 0 15px rgba(197, 155, 109, 0.15);
+    }
 
     /* ==========================================================================
        LUXURY LIGHT THEME SYSTEM
@@ -163,11 +219,28 @@
       border-color: #e2e8f0 !important;
       box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06) !important;
     }
-    html.light-mode nav .logo-wrapper {
-      background-color: #080d14;
-      border-radius: 0.85rem;
-      padding: 3px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    /* Light Mode Logo Golden Ambient Aura (no dark square box!) */
+    html.light-mode .logo-wrapper {
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 9999px !important;
+      padding: 0 !important;
+    }
+    html.light-mode .logo-glow {
+      background: radial-gradient(circle, rgba(217, 119, 6, 0.28) 0%, rgba(245, 158, 11, 0.1) 50%, transparent 72%) !important;
+      filter: blur(6px) !important;
+      opacity: 0.95 !important;
+    }
+    html.light-mode .logo-wrapper:hover .logo-glow {
+      opacity: 1 !important;
+      transform: scale(1.15) !important;
+      background: radial-gradient(circle, rgba(217, 119, 6, 0.42) 0%, rgba(245, 158, 11, 0.18) 55%, transparent 75%) !important;
+    }
+    html.light-mode .logo-wrapper img {
+      filter: drop-shadow(0 3px 10px rgba(180, 83, 9, 0.4)) drop-shadow(0 0 6px rgba(245, 158, 11, 0.25)) !important;
+    }
+    html.light-mode .logo-wrapper:hover img {
+      filter: drop-shadow(0 4px 16px rgba(180, 83, 9, 0.6)) drop-shadow(0 0 12px rgba(245, 158, 11, 0.45)) !important;
     }
     html.light-mode nav .lg\:flex a:not(.bg-gradient-to-r) {
       color: #334155 !important;
@@ -363,6 +436,58 @@
       box-shadow: 0 10px 25px -5px rgba(197, 155, 109, 0.2) !important;
     }
 
+    /* Step-by-Step Process Section in Light Mode */
+    html.light-mode #process,
+    html.light-mode .process-section {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+      border-color: #e2e8f0 !important;
+    }
+    html.light-mode .process-section .process-badge {
+      background-color: #fef3c7 !important;
+      border-color: #fde68a !important;
+      color: #92400e !important;
+    }
+    html.light-mode .process-section h2.process-heading {
+      color: #0f172a !important;
+    }
+    html.light-mode .process-section p.process-subtitle {
+      color: #475569 !important;
+    }
+    html.light-mode .process-section .step-card {
+      background: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+    }
+    html.light-mode .process-section .step-card:hover {
+      transform: translateY(-4px);
+      border-color: #c59b6d !important;
+      box-shadow: 0 12px 30px -4px rgba(197, 155, 109, 0.25) !important;
+    }
+    html.light-mode .process-section .step-card h4 {
+      color: #0f172a !important;
+    }
+    html.light-mode .process-section .step-card p {
+      color: #475569 !important;
+    }
+    html.light-mode .process-section .step-card .step-badge {
+      background-color: #f1f5f9 !important;
+      color: #334155 !important;
+      border-color: #cbd5e1 !important;
+    }
+    html.light-mode .process-section .step-card .step-footer {
+      border-color: #f1f5f9 !important;
+    }
+    html.light-mode .process-section .step-card .tag-amber {
+      background-color: #fffbeb !important;
+      color: #92400e !important;
+      border-color: #fde68a !important;
+    }
+    html.light-mode .process-section .step-card .tag-teal {
+      background-color: #f0fdfa !important;
+      color: #0f766e !important;
+      border-color: #99f6e4 !important;
+    }
+
     /* Ziyarah Section */
     html.light-mode #ziyarah {
       background-color: #f1f5f9 !important;
@@ -420,12 +545,6 @@
     html.light-mode #contact .w-9.h-9.bg-slate-800:hover {
       background-color: #c59b6d !important;
       color: #080d14 !important;
-    }
-    html.light-mode #contact .logo-wrapper {
-      background-color: #080d14;
-      border-radius: 0.85rem;
-      padding: 3px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
     html.light-mode #contact .bg-slate-900 {
       background-color: #ffffff !important;
@@ -491,7 +610,8 @@
         <!-- Logo & Brand Info (No circular border, pure SVG & vivid) -->
         <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group">
           <div class="logo-wrapper relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center">
-            <img src="logo.svg" alt="Rowzaye Athar Travels Logo" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+            <div class="logo-glow absolute inset-0 rounded-full pointer-events-none"></div>
+            <img src="logo-light.png" alt="Rowzaye Athar Travels Logo" class="relative z-10 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
           </div>
           <div class="flex flex-col justify-center">
             <span class="block text-base sm:text-2xl font-bold text-white tracking-tight font-bengali leading-none group-hover:text-brand-goldLight transition-colors">
@@ -638,8 +758,9 @@
             <a href="#packages" class="bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-7 py-3.5 rounded-xl shadow-xl hover:shadow-brand-gold/40 hover:scale-105 transition duration-300 text-base flex items-center gap-2">
               <i class="fa-solid fa-list-check"></i> উমরাহ প্যাকেজগুলো দেখুন
             </a>
-            <a href="https://wa.me/8801719161547?text=আসসালামু%20আলাইকুম,%20আমি%20উমরাহ%20প্যাকেজ%20সম্পর্কে%20আলোচনা%20করতে%20চাই" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white font-medium px-6 py-3.5 rounded-xl border border-slate-700 hover:border-brand-gold/60 transition duration-300 text-base flex items-center gap-2">
-              <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> সরাসরি কথা বলুন
+            <a href="https://wa.me/8801719161547?text=আসসালামু%20আলাইকুম,%20আমি%20উমরাহ%20প্যাকেজ%20সম্পর্কে%20আলোচনা%20করতে%20চাই" target="_blank" class="whatsapp-hero-btn bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-600/30 hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-300 text-base flex items-center gap-2.5 border border-emerald-400/40">
+              <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+              <span>সরাসরি কথা বলুন</span>
             </a>
           </div>
 
@@ -1215,43 +1336,95 @@
   </section>
 
   <!-- Step-by-Step Journey Process (How It Works) -->
-  <section class="py-16 bg-brand-navy border-y border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-brand-gold font-semibold text-xs uppercase tracking-wider">সহজ ও স্বচ্ছ প্রক্রিয়া</span>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1 font-bengali">
-          মাত্র ৪টি সহজ ধাপে শুরু করুন আপনার পবিত্র সফর
+  <section id="process" class="process-section py-20 bg-brand-navy border-y border-slate-800/80 relative overflow-hidden">
+    <!-- Ambient decorative light glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-amber-500/10 border border-amber-500/30 text-brand-gold process-badge">
+          <i class="fa-solid fa-route text-brand-gold"></i> সহজ ও স্বচ্ছ প্রক্রিয়া
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-3 font-bengali process-heading">
+          মাত্র ৪টি সহজ ধাপে শুরু করুন আপনার <span class="gold-gradient-text">পবিত্র সফর</span>
         </h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2.5 max-w-xl mx-auto process-subtitle leading-relaxed">
+          কোনো রকম জটিলতা ছাড়াই সরাসরি নির্ভরযোগ্য তত্ত্বাবধানে আপনার পবিত্র হজ ও উমরাহর প্রতিটি প্রস্তুতি সম্পন্ন করুন।
+        </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- Step 1 -->
-        <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 text-center relative">
-          <div class="w-10 h-10 rounded-full bg-brand-gold text-slate-950 font-bold flex items-center justify-center mx-auto mb-3 text-sm">১</div>
-          <h4 class="text-white font-bold text-sm">প্যাকেজ নির্বাচন ও পরামর্শ</h4>
-          <p class="text-slate-400 text-xs mt-1">আমাদের বিশেষজ্ঞ উপদেষ্টার সাথে আলোচনা করে আপনার পছন্দের তারিখ ও প্যাকেজ চূড়ান্ত করুন।</p>
+        <div class="step-card p-6 rounded-2xl border text-center relative flex flex-col items-center justify-between group">
+          <div class="w-full">
+            <div class="flex items-center justify-between w-full mb-4">
+              <span class="step-badge text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">ধাপ ০১</span>
+              <i class="fa-solid fa-comments text-amber-400 text-sm"></i>
+            </div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-black flex items-center justify-center text-xl shadow-lg shadow-amber-500/25 mb-4 mx-auto group-hover:scale-110 transition-transform">
+              ১
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-brand-goldLight transition-colors">প্যাকেজ নির্বাচন ও পরামর্শ</h4>
+            <p class="text-xs mt-2.5 leading-relaxed text-slate-300">আমাদের বিশেষজ্ঞ উপদেষ্টার সাথে আলোচনা করে আপনার বাজেট ও পছন্দের তারিখ অনুযায়ী সেরা প্যাকেজটি চূড়ান্ত করুন।</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 w-full step-footer">
+            <span class="tag-amber text-[11px] px-2.5 py-1 rounded-md bg-amber-500/10 text-brand-gold border border-amber-500/20 font-medium inline-block">ফ্রি কনসাল্টেশন</span>
+          </div>
         </div>
 
         <!-- Step 2 -->
-        <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 text-center relative">
-          <div class="w-10 h-10 rounded-full bg-brand-tealLight text-slate-950 font-bold flex items-center justify-center mx-auto mb-3 text-sm">২</div>
-          <h4 class="text-white font-bold text-sm">পাসপোর্ট ও কাগজপত্র জমা</h4>
-          <p class="text-slate-400 text-xs mt-1">পাসপোর্ট ও ছবি সরাসরি আমাদের অফিসে জমা দিন বা অনলাইনে পাঠান। দ্রুততম সময়ে ভিসা কনফার্মেশন।</p>
+        <div class="step-card p-6 rounded-2xl border text-center relative flex flex-col items-center justify-between group">
+          <div class="w-full">
+            <div class="flex items-center justify-between w-full mb-4">
+              <span class="step-badge text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">ধাপ ০২</span>
+              <i class="fa-solid fa-passport text-teal-400 text-sm"></i>
+            </div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-500 via-teal-400 to-emerald-400 text-slate-950 font-black flex items-center justify-center text-xl shadow-lg shadow-teal-500/25 mb-4 mx-auto group-hover:scale-110 transition-transform">
+              ২
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-brand-tealLight transition-colors">পাসপোর্ট ও কাগজপত্র জমা</h4>
+            <p class="text-xs mt-2.5 leading-relaxed text-slate-300">পাসপোর্ট ও ছবি সরাসরি আমাদের মোহাম্মদপুর অফিসে জমা দিন বা অনলাইনে পাঠান। দ্রুততম সময়ে উমরাহ ই-ভিসা প্রসেসিং।</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 w-full step-footer">
+            <span class="tag-teal text-[11px] px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-300 border border-teal-500/20 font-medium inline-block">দ্রুত ই-ভিসা নিশ্চিতকরণ</span>
+          </div>
         </div>
 
         <!-- Step 3 -->
-        <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 text-center relative">
-          <div class="w-10 h-10 rounded-full bg-brand-gold text-slate-950 font-bold flex items-center justify-center mx-auto mb-3 text-sm">৩</div>
-          <h4 class="text-white font-bold text-sm">প্রাক-সফর দিকনির্দেশনা ও কিট</h4>
-          <p class="text-slate-400 text-xs mt-1">সফরের আগে ব্যবহারিক উমরাহ ট্রেনিং, প্রয়োজনীয় ব্যাগ, ইহরামের কাপড় ও হ্যান্ডবুক বুঝে নিন।</p>
+        <div class="step-card p-6 rounded-2xl border text-center relative flex flex-col items-center justify-between group">
+          <div class="w-full">
+            <div class="flex items-center justify-between w-full mb-4">
+              <span class="step-badge text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">ধাপ ০৩</span>
+              <i class="fa-solid fa-suitcase-rolling text-amber-400 text-sm"></i>
+            </div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-black flex items-center justify-center text-xl shadow-lg shadow-amber-500/25 mb-4 mx-auto group-hover:scale-110 transition-transform">
+              ৩
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-brand-goldLight transition-colors">প্রাক-সফর দিকনির্দেশনা ও কিট</h4>
+            <p class="text-xs mt-2.5 leading-relaxed text-slate-300">সফরের পূর্বে সরাসরি উমরাহ প্রশিক্ষণ, ইহরামের নিয়মকানুন, ট্রাভেল ব্যাগ, ইহরাম কাপড় ও প্রয়োজনীয় গাইডবুক বুঝে নিন।</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 w-full step-footer">
+            <span class="tag-amber text-[11px] px-2.5 py-1 rounded-md bg-amber-500/10 text-brand-gold border border-amber-500/20 font-medium inline-block">কমপ্লিট উমরাহ কিট</span>
+          </div>
         </div>
 
         <!-- Step 4 -->
-        <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 text-center relative">
-          <div class="w-10 h-10 rounded-full bg-brand-tealLight text-slate-950 font-bold flex items-center justify-center mx-auto mb-3 text-sm">৪</div>
-          <h4 class="text-white font-bold text-sm">নিশ্চিন্তে পবিত্র যাত্রা</h4>
-          <p class="text-slate-400 text-xs mt-1">জেদ্দা/মদিনা বিমানবন্দরে নেমেই আমাদের মোয়াল্লিম আপনাকে রিসিভ করে হোটেলে নিয়ে যাবেন।</p>
+        <div class="step-card p-6 rounded-2xl border text-center relative flex flex-col items-center justify-between group">
+          <div class="w-full">
+            <div class="flex items-center justify-between w-full mb-4">
+              <span class="step-badge text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">ধাপ ০৪</span>
+              <i class="fa-solid fa-kaaba text-teal-400 text-sm"></i>
+            </div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-500 via-teal-400 to-emerald-400 text-slate-950 font-black flex items-center justify-center text-xl shadow-lg shadow-teal-500/25 mb-4 mx-auto group-hover:scale-110 transition-transform">
+              ৪
+            </div>
+            <h4 class="font-bold text-base text-white group-hover:text-brand-tealLight transition-colors">নিশ্চিন্তে পবিত্র যাত্রা</h4>
+            <p class="text-xs mt-2.5 leading-relaxed text-slate-300">জেদ্দা/মদিনা বিমানবন্দরে নেমেই আমাদের মোয়াল্লিম আপনাকে রিসিভ করবেন এবং হোটেল ও ঐতিহাসিক জিয়ারতে সার্বক্ষণিক সাথে থাকবেন।</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 w-full step-footer">
+            <span class="tag-teal text-[11px] px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-300 border border-teal-500/20 font-medium inline-block">২৪/৭ দায়িত্বশীল সাপোর্ট</span>
+          </div>
         </div>
 
       </div>
@@ -1525,7 +1698,8 @@
           <div>
             <div class="flex items-center gap-3.5 mb-3">
               <div class="logo-wrapper relative w-14 h-14 flex-shrink-0 flex items-center justify-center">
-                <img src="logo.svg" alt="Logo" class="w-full h-full object-contain">
+                <div class="logo-glow absolute inset-0 rounded-full pointer-events-none"></div>
+                <img src="logo-light.png" alt="Logo" class="relative z-10 w-full h-full object-contain">
               </div>
               <div>
                 <h3 class="text-xl font-bold text-white font-bengali leading-tight">রওজায়ে আতহার ট্রাভেলস</h3>
