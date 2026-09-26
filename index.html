@@ -59,13 +59,67 @@
   </script>
 
   <style>
+    /* ==========================================================================
+       GLOBAL TYPOGRAPHY & READABILITY SYSTEM (BOTH THEMES)
+       ========================================================================== */
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "kern" 1, "liga" 1;
+    }
     body {
       font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
       background-color: #080d14;
-      color: #e2e8f0;
+      color: #f1f5f9;
+      line-height: 1.68;
+      letter-spacing: 0.012em;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-    .gold-gradient-text {
+    p, li, label {
+      line-height: 1.68;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+    }
+    /* Package cards feature readability */
+    .package-card ul {
+      font-size: 13.5px !important;
+      line-height: 1.65 !important;
+    }
+    .package-card li {
+      font-weight: 450;
+    }
+    /* Services, Ziyarah & FAQ paragraph readability */
+    #services .bg-brand-card p,
+    #ziyarah p,
+    #why-us p,
+    #faq p {
+      font-size: 13.5px !important;
+      line-height: 1.68 !important;
+    }
+
+    /* ==========================================================================
+       DARK THEME TEXT CONTRAST & LEGIBILITY BOOSTER
+       ========================================================================== */
+    html:not(.light-mode) .text-slate-400 {
+      color: #cbd5e1 !important; /* Crisp Slate 300 instead of dim Slate 400 */
+    }
+    html:not(.light-mode) .text-slate-500 {
+      color: #94a3b8 !important; /* Readable Slate 400 instead of dark Slate 500 */
+    }
+    html:not(.light-mode) .text-slate-300 {
+      color: #f8fafc !important; /* Bright Slate 50 */
+    }
+    html:not(.light-mode) .text-slate-200 {
+      color: #ffffff !important;
+    }
+    html:not(.light-mode) input::placeholder,
+    html:not(.light-mode) textarea::placeholder {
+      color: #94a3b8 !important;
+    }
+    html:not(.light-mode) .gold-gradient-text {
       background: linear-gradient(135deg, #fce8b2 0%, #c59b6d 50%, #e6ca85 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -153,24 +207,49 @@
 
     html.light-mode body {
       background-color: #f8fafc !important;
-      color: #1e293b !important;
-    }
-
-    /* Typography in Light Mode */
-    html.light-mode .text-white {
       color: #0f172a !important;
     }
+
+    /* Typography in Light Mode - High Contrast Boost */
+    html.light-mode .text-white {
+      color: #090d16 !important;
+      font-weight: 700;
+    }
     html.light-mode .text-slate-200 {
-      color: #1e293b !important;
+      color: #0f172a !important;
+      font-weight: 500;
     }
     html.light-mode .text-slate-300 {
-      color: #334155 !important;
+      color: #1e293b !important;
+      font-weight: 450;
     }
     html.light-mode .text-slate-400 {
-      color: #64748b !important;
+      color: #334155 !important; /* Deep Slate 700 - never faint or low contrast! */
+      font-weight: 450;
     }
     html.light-mode .text-slate-500 {
-      color: #94a3b8 !important;
+      color: #475569 !important; /* Slate 600 - crisp legibility */
+      font-weight: 500;
+    }
+    html.light-mode p,
+    html.light-mode li {
+      color: #334155;
+    }
+    html.light-mode strong {
+      color: #090d16 !important;
+    }
+
+    /* Light Mode Gold & Teal High-Contrast Colors */
+    html.light-mode .text-brand-gold,
+    html.light-mode .text-brand-goldLight,
+    html.light-mode .text-amber-400,
+    html.light-mode .text-amber-300 {
+      color: #92400e !important; /* Deep Islamic bronze amber (AAA contrast on white) */
+      font-weight: 600;
+    }
+    html.light-mode .text-brand-tealLight {
+      color: #0f766e !important; /* Deep jewel teal (AAA contrast on white) */
+      font-weight: 600;
     }
 
     /* Keep text white over dark photo overlays & colored action buttons */
@@ -192,9 +271,10 @@
 
     /* High-contrast Gold Gradient Text for Light Backgrounds */
     html.light-mode .gold-gradient-text {
-      background: linear-gradient(135deg, #9a6308 0%, #c68913 45%, #854d0e 100%) !important;
+      background: linear-gradient(135deg, #78350f 0%, #b45309 45%, #92400e 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
+      font-weight: 800;
     }
 
     /* Hero Pattern in Light Mode */
@@ -318,29 +398,39 @@
     html.light-mode input,
     html.light-mode select,
     html.light-mode textarea {
-      background-color: #f8fafc !important;
-      border-color: #cbd5e1 !important;
+      background-color: #ffffff !important;
+      border: 1.5px solid #94a3b8 !important;
       color: #0f172a !important;
+      font-size: 13.5px !important;
+      font-weight: 500 !important;
     }
     html.light-mode input::placeholder,
     html.light-mode textarea::placeholder {
-      color: #94a3b8 !important;
+      color: #64748b !important;
     }
     html.light-mode input:focus,
     html.light-mode select:focus,
     html.light-mode textarea:focus {
-      border-color: #c59b6d !important;
+      border-color: #92400e !important;
       background-color: #ffffff !important;
-      box-shadow: 0 0 0 3px rgba(197, 155, 109, 0.25) !important;
+      box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.2) !important;
     }
 
     /* Key Statistics Banner */
     html.light-mode section.border-y {
       background: linear-gradient(to right, #f8fafc, #ffffff, #f8fafc) !important;
-      border-color: #e2e8f0 !important;
+      border-color: #cbd5e1 !important;
+    }
+    html.light-mode section.border-y .text-slate-300 {
+      color: #0f172a !important;
+      font-weight: 600 !important;
+    }
+    html.light-mode section.border-y .text-slate-500 {
+      color: #475569 !important;
+      font-weight: 500 !important;
     }
     html.light-mode section.border-y .text-brand-gold {
-      color: #b45309 !important;
+      color: #92400e !important;
     }
     html.light-mode section.border-y .text-brand-tealLight {
       color: #0f766e !important;
@@ -349,45 +439,64 @@
     /* Filter Tabs */
     html.light-mode .tab-btn.bg-slate-800 {
       background-color: #e2e8f0 !important;
-      color: #334155 !important;
+      color: #1e293b !important;
+      font-weight: 600 !important;
+      border: 1px solid #cbd5e1 !important;
     }
     html.light-mode .tab-btn.bg-slate-800:hover {
       background-color: #cbd5e1 !important;
       color: #0f172a !important;
     }
     html.light-mode .tab-btn.bg-brand-gold {
-      background-color: #c59b6d !important;
-      color: #080d14 !important;
+      background-color: #92400e !important;
+      color: #ffffff !important;
     }
 
     /* Package Cards */
     html.light-mode .package-card {
       background-color: #ffffff !important;
-      border-color: #e2e8f0 !important;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06) !important;
     }
     html.light-mode .package-card.vip {
       background: linear-gradient(to bottom, #ffffff, #fffdf8) !important;
-      border-color: #c59b6d !important;
-      box-shadow: 0 10px 30px -5px rgba(197, 155, 109, 0.25) !important;
+      border: 1.5px solid #d97706 !important;
+      box-shadow: 0 10px 30px -5px rgba(217, 119, 6, 0.25) !important;
     }
     html.light-mode .package-card.standard {
-      border-color: #0d9488 !important;
+      border: 1.5px solid #0d9488 !important;
     }
     html.light-mode .package-card .text-brand-gold {
-      color: #b45309 !important;
+      color: #92400e !important;
+      font-weight: 800 !important;
     }
     html.light-mode .package-card .text-brand-tealLight {
       color: #0f766e !important;
     }
+    html.light-mode .package-card ul {
+      color: #1e293b !important;
+    }
+    html.light-mode .package-card li {
+      color: #1e293b !important;
+      font-weight: 500 !important;
+    }
+    html.light-mode .package-card li i {
+      color: #0f766e !important;
+    }
+    html.light-mode .package-card .text-slate-400 {
+      color: #475569 !important;
+      font-weight: 500 !important;
+    }
     html.light-mode .package-card button.bg-slate-800 {
       background-color: #f1f5f9 !important;
       color: #0f172a !important;
-      border-color: #cbd5e1 !important;
+      border: 1px solid #cbd5e1 !important;
+      font-weight: 600 !important;
     }
     html.light-mode .package-card button.bg-slate-800:hover {
-      background-color: #c59b6d !important;
-      color: #080d14 !important;
+      background-color: #92400e !important;
+      color: #ffffff !important;
+      border-color: #92400e !important;
     }
 
     /* Badges */
@@ -505,12 +614,17 @@
     }
     html.light-mode #why-us .bg-brand-card {
       background-color: #ffffff !important;
-      border-color: #e2e8f0 !important;
+      border: 1px solid #cbd5e1 !important;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
     }
     html.light-mode #why-us .bg-slate-900\/80 {
-      background-color: #f8fafc !important;
-      border-color: #e2e8f0 !important;
+      background-color: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    }
+    html.light-mode #why-us .text-slate-300,
+    html.light-mode #why-us .text-slate-400 {
+      color: #334155 !important;
     }
 
     /* FAQ Section */
@@ -519,7 +633,18 @@
     }
     html.light-mode #faq .bg-brand-card {
       background-color: #ffffff !important;
-      border-color: #e2e8f0 !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    }
+    html.light-mode #faq button {
+      color: #090d16 !important;
+    }
+    html.light-mode #faq button:hover {
+      color: #92400e !important;
+    }
+    html.light-mode #faq .text-slate-300,
+    html.light-mode #faq .text-slate-400 {
+      color: #334155 !important;
     }
 
     /* Contact Section */
@@ -529,13 +654,17 @@
     }
     html.light-mode #contact .bg-slate-900\/90 {
       background-color: #ffffff !important;
-      border-color: #e2e8f0 !important;
+      border: 1px solid #cbd5e1 !important;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
     }
     html.light-mode #contact .bg-brand-card {
       background-color: #ffffff !important;
-      border-color: #e2e8f0 !important;
+      border: 1px solid #cbd5e1 !important;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+    }
+    html.light-mode #contact .text-slate-300,
+    html.light-mode #contact .text-slate-400 {
+      color: #334155 !important;
     }
     html.light-mode #contact .w-9.h-9.bg-slate-800 {
       background-color: #f1f5f9 !important;
@@ -733,7 +862,7 @@
             <span class="gold-gradient-text">পবিত্র হারামাইনের</span> শান্তিময় সফর
           </h1>
 
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
             <strong class="text-brand-goldLight font-semibold">রওজায়ে আতহার ট্রাভেলস</strong>-এর সাথে আপনার পবিত্র হজ ও উমরাহ হোক ঝামেলামুক্ত, আত্মিক ও আনন্দদায়ক। অভিজ্ঞ আলেম ও মোয়াল্লিমের প্রত্যক্ষ তত্ত্বাবধান, হারামের নিকটতম হোটেল এবং সর্বোচ্চ আন্তরিক সেবায় আমরা প্রতিশ্রুতিবদ্ধ।
           </p>
 
@@ -940,7 +1069,7 @@
                 <span class="text-[11px] bg-emerald-950/90 text-emerald-300 border border-emerald-800 px-2.5 py-0.5 rounded whitespace-nowrap">বাজেটবান্ধব</span>
               </div>
 
-              <ul class="space-y-2 text-[11.5px] text-slate-300 flex-1">
+              <ul class="space-y-2.5 text-xs sm:text-[13.5px] text-slate-300 flex-1 font-medium">
                 <li class="flex items-center gap-2">
                   <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> মক্কা: ৭০০-৮০০ মি. মানসম্মত হোটেল
                 </li>
@@ -998,7 +1127,7 @@
                 <span class="text-[11px] bg-teal-950/90 text-teal-300 border border-teal-700 px-2.5 py-0.5 rounded whitespace-nowrap">জনপ্রিয় চয়েস</span>
               </div>
 
-              <ul class="space-y-2 text-[11.5px] text-slate-300 flex-1">
+              <ul class="space-y-2.5 text-xs sm:text-[13.5px] text-slate-300 flex-1 font-medium">
                 <li class="flex items-center gap-2">
                   <i class="fa-solid fa-check text-brand-gold shrink-0"></i> মক্কা: ৩৫০-৪৫০ মি. ৩★/৪★ হোটেল
                 </li>
@@ -1061,7 +1190,7 @@
                 <span class="text-[11px] bg-amber-950/90 text-amber-300 border border-amber-700 px-2.5 py-0.5 rounded whitespace-nowrap">৫★ ভিআইপি</span>
               </div>
 
-              <ul class="space-y-2 text-[11.5px] text-slate-300 flex-1">
+              <ul class="space-y-2.5 text-xs sm:text-[13.5px] text-slate-300 flex-1 font-medium">
                 <li class="flex items-center gap-2">
                   <i class="fa-solid fa-star text-brand-gold shrink-0"></i> মক্কা: হারাম চত্বরে ৫★ ক্লক টাওয়ার
                 </li>
@@ -1119,7 +1248,7 @@
                 <span class="text-[11px] bg-teal-950/90 text-teal-300 border border-teal-800 px-2.5 py-0.5 rounded whitespace-nowrap">রমজান স্পেশাল</span>
               </div>
 
-              <ul class="space-y-2 text-[11.5px] text-slate-300 flex-1">
+              <ul class="space-y-2.5 text-xs sm:text-[13.5px] text-slate-300 flex-1 font-medium">
                 <li class="flex items-center gap-2">
                   <i class="fa-solid fa-check text-brand-tealLight shrink-0"></i> মক্কা ও মদিনায় সুবিধাজনক হোটেল
                 </li>
