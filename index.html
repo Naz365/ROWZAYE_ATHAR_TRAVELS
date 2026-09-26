@@ -255,7 +255,6 @@
     /* Keep text white over dark photo overlays & colored action buttons */
     html.light-mode .package-card .relative .text-white,
     html.light-mode #hajj .relative .text-white,
-    html.light-mode footer .text-white,
     html.light-mode .bg-emerald-600,
     html.light-mode .bg-emerald-600 *,
     html.light-mode .bg-emerald-500,
@@ -687,20 +686,76 @@
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
     }
 
-    /* Grounding Luxury Footer */
-    html.light-mode footer {
-      background-color: #080d14 !important;
-      border-color: #1e293b !important;
-      color: #94a3b8 !important;
+    /* Footer in Light Mode */
+    html.light-mode footer,
+    html.light-mode footer.bg-brand-dark {
+      background-color: #f1f5f9 !important;
+      border-color: #cbd5e1 !important;
+      color: #334155 !important;
+    }
+    html.light-mode footer .border-b,
+    html.light-mode footer .border-slate-800\/60,
+    html.light-mode footer .border-slate-800\/80 {
+      border-color: #cbd5e1 !important;
     }
     html.light-mode footer .text-white {
+      color: #090d16 !important;
+      font-weight: 700 !important;
+    }
+    html.light-mode footer .text-brand-gold {
+      color: #92400e !important;
+      font-weight: 600 !important;
+    }
+    html.light-mode footer .text-slate-400 {
+      color: #334155 !important;
+    }
+    html.light-mode footer .text-slate-500 {
+      color: #475569 !important;
+    }
+    html.light-mode footer a.text-slate-200,
+    html.light-mode footer .footer-phone-link {
+      color: #0f172a !important;
+      font-weight: 600 !important;
+    }
+    html.light-mode footer a.text-slate-200:hover,
+    html.light-mode footer .footer-phone-link:hover {
+      color: #92400e !important;
+    }
+    html.light-mode footer .footer-phone-sep,
+    html.light-mode footer .text-slate-600 {
+      color: #94a3b8 !important;
+    }
+    html.light-mode footer a:hover {
+      color: #92400e !important;
+    }
+
+    /* Footer in Dark Mode */
+    html:not(.light-mode) footer,
+    html:not(.light-mode) footer.bg-brand-dark {
+      background-color: #080d14 !important;
+      border-color: rgba(51, 65, 85, 0.6) !important;
+      color: #cbd5e1 !important;
+    }
+    html:not(.light-mode) footer .text-white {
       color: #ffffff !important;
     }
-    html.light-mode footer a.text-slate-200 {
-      color: #e2e8f0 !important;
-    }
-    html.light-mode footer a.text-slate-200:hover {
+    html:not(.light-mode) footer .text-brand-gold {
       color: #c59b6d !important;
+    }
+    html:not(.light-mode) footer a.text-slate-200,
+    html:not(.light-mode) footer .footer-phone-link {
+      color: #f8fafc !important;
+      font-weight: 500 !important;
+    }
+    html:not(.light-mode) footer a.text-slate-200:hover,
+    html:not(.light-mode) footer .footer-phone-link:hover {
+      color: #fce8b2 !important;
+    }
+    html:not(.light-mode) footer .footer-phone-sep {
+      color: #64748b !important;
+    }
+    html:not(.light-mode) footer .text-slate-500 {
+      color: #94a3b8 !important;
     }
 
     /* Universal Smooth Transition for Theme Toggling */
@@ -1366,8 +1421,8 @@
             <button onclick="openBookingModal('হজ ২০২৭ প্রি-রেজিস্ট্রেশন', 'অগ্রিম সিরিয়াল ও প্যাকেজ বুকিং')" class="bg-brand-gold hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs flex items-center gap-2 shadow-lg transition">
               <i class="fa-solid fa-file-signature"></i> হজ ২০২৭ প্রি-রেজিস্ট্রেশন করুন
             </button>
-            <a href="tel:+8801719161547" class="border border-slate-700 hover:border-brand-gold text-slate-300 hover:text-white px-5 py-3 rounded-xl text-xs flex items-center gap-2 transition">
-              <i class="fa-solid fa-phone text-brand-gold"></i> +৮৮০১৭১৯-১৬১৫৪৭
+            <a href="tel:+8801719161547" class="border border-slate-700 hover:border-brand-gold text-slate-300 hover:text-white px-5 py-3 rounded-xl text-xs flex items-center gap-2 transition font-sans font-medium tracking-wide">
+              <i class="fa-solid fa-phone text-brand-gold"></i> +880 1719-16 15 47
             </a>
           </div>
 
@@ -2002,10 +2057,16 @@
           <p class="text-xs text-brand-gold mt-0.5">প্রোপ্রাইটার: মুফতি মাহমুদুল হাসান &nbsp;|&nbsp; “বিশ্বাসের পথে আমাদের সাথে”</p>
           <p class="text-slate-400 text-[11px] mt-1">অফিস: <a href="https://maps.app.goo.gl/g1xFPWcDEj3agxPP7" target="_blank" class="hover:text-brand-gold transition underline">অর্কিড আবরার টাওয়ার, বাড়ির নং ১২২, রোড নং ৪/এ, স্বপ্ন ধরা হাউজিং, মোহাম্মদপুর, ঢাকা - ১২০৭</a></p>
         </div>
-        <div class="flex flex-col sm:flex-row items-center gap-3 text-xs">
-          <a href="tel:+8801719161547" class="text-slate-200 hover:text-brand-gold transition"><i class="fa-solid fa-phone text-brand-gold"></i> +৮৮০ ১৭১৯-১৬ ১৫ ৪৭</a>
-          <span class="hidden sm:inline text-slate-600">|</span>
-          <a href="tel:+8801619161547" class="text-slate-200 hover:text-brand-gold transition">+৮৮০ ১৬১৯-১৬ ১৫ ৪৭</a>
+        <div class="flex flex-col sm:flex-row items-center gap-3 text-xs font-sans">
+          <a href="tel:+8801719161547" class="footer-phone-link text-slate-200 hover:text-brand-gold transition flex items-center gap-1.5 font-semibold tracking-wide">
+            <i class="fa-solid fa-phone text-brand-gold text-[11px]"></i>
+            <span>+880 1719-16 15 47</span>
+          </a>
+          <span class="hidden sm:inline text-slate-600 footer-phone-sep">|</span>
+          <a href="tel:+8801619161547" class="footer-phone-link text-slate-200 hover:text-brand-gold transition flex items-center gap-1.5 font-semibold tracking-wide">
+            <i class="fa-solid fa-phone text-brand-gold text-[11px] sm:hidden"></i>
+            <span>+880 1619-16 15 47</span>
+          </a>
         </div>
       </div>
 
