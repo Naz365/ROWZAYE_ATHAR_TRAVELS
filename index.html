@@ -168,6 +168,63 @@
       filter: drop-shadow(0 4px 16px rgba(245, 158, 11, 0.65));
     }
 
+    /* Brand Text Typography & Vertical Symmetry in Navbar */
+    .brand-text-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .brand-title {
+      line-height: 1.12 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    .brand-subtitle {
+      line-height: 1 !important;
+      margin-top: 2px !important;
+      margin-bottom: 0 !important;
+    }
+    @media (min-width: 640px) {
+      .brand-subtitle {
+        margin-top: 2.5px !important;
+      }
+    }
+    .brand-tagline {
+      line-height: 1.15 !important;
+      margin-top: 2px !important;
+      margin-bottom: 0 !important;
+    }
+    @media (min-width: 640px) {
+      .brand-tagline {
+        margin-top: 2.5px !important;
+      }
+    }
+    html.light-mode .brand-tagline {
+      color: #475569 !important;
+    }
+
+    /* Footer Brand Text Typography & Symmetry */
+    .footer-brand-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .footer-brand-info .footer-title {
+      line-height: 1.25 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    .footer-brand-info .footer-sub {
+      line-height: 1.25 !important;
+      margin-top: 3px !important;
+      margin-bottom: 0 !important;
+    }
+    .footer-brand-info .footer-office {
+      line-height: 1.35 !important;
+      margin-top: 3px !important;
+      margin-bottom: 0 !important;
+    }
+
     /* WhatsApp Hero CTA Button */
     .whatsapp-hero-btn {
       background: linear-gradient(135deg, #059669 0%, #10b981 50%, #047857 100%) !important;
@@ -792,19 +849,19 @@
       <div class="flex justify-between items-center h-16 sm:h-20">
         
         <!-- Logo & Brand Info (No circular border, pure SVG & vivid) -->
-        <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group">
+        <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group my-auto">
           <div class="logo-wrapper relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center">
             <div class="logo-glow absolute inset-0 rounded-full pointer-events-none"></div>
             <img src="logo-light.png" alt="Rowzaye Athar Travels Logo" class="relative z-10 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
           </div>
-          <div class="flex flex-col justify-center">
-            <span class="block text-base sm:text-2xl font-bold text-white tracking-tight font-bengali leading-none group-hover:text-brand-goldLight transition-colors">
+          <div class="brand-text-group flex flex-col justify-center my-auto">
+            <span class="brand-title block text-base sm:text-2xl font-bold text-white tracking-tight font-bengali group-hover:text-brand-goldLight transition-colors">
               রওজায়ে আতহার ট্রাভেলস
             </span>
-            <span class="block text-[10px] sm:text-[12px] font-bold text-brand-gold uppercase tracking-widest font-serifTitle mt-1 sm:mt-1.5 leading-none">
+            <span class="brand-subtitle block text-[10px] sm:text-[11.5px] font-bold text-brand-gold uppercase tracking-[0.16em] font-serifTitle">
               ROWZAYE ATHAR TRAVELS
             </span>
-            <span class="block text-[9.5px] sm:text-[11px] text-slate-300/80 font-bengali mt-0.5 sm:mt-1 leading-none">
+            <span class="brand-tagline block text-[9.5px] sm:text-[10.5px] text-slate-300/85 font-bengali">
               “বিশ্বাসের পথে আমাদের সাথে”
             </span>
           </div>
@@ -2049,15 +2106,21 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-brand-dark border-t border-slate-800/80 py-8 text-slate-400 text-xs">
+  <footer class="bg-brand-dark border-t border-slate-800/80 py-6 sm:py-7 text-slate-400 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-b border-slate-800/60 pb-6 text-center md:text-left">
-        <div>
-          <p class="text-sm text-white font-bold font-bengali">রওজায়ে আতহার ট্রাভেলস (ROWZAYE ATHAR TRAVELS)</p>
-          <p class="text-xs text-brand-gold mt-0.5">প্রোপ্রাইটার: মুফতি মাহমুদুল হাসান &nbsp;|&nbsp; “বিশ্বাসের পথে আমাদের সাথে”</p>
-          <p class="text-slate-400 text-[11px] mt-1">অফিস: <a href="https://maps.app.goo.gl/g1xFPWcDEj3agxPP7" target="_blank" class="hover:text-brand-gold transition underline">অর্কিড আবরার টাওয়ার, বাড়ির নং ১২২, রোড নং ৪/এ, স্বপ্ন ধরা হাউজিং, মোহাম্মদপুর, ঢাকা - ১২০৭</a></p>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-b border-slate-800/60 pb-5 text-center md:text-left">
+        <div class="footer-brand-info flex flex-col justify-center">
+          <p class="footer-title text-sm sm:text-base text-white font-bold font-bengali">
+            রওজায়ে আতহার ট্রাভেলস <span class="text-xs font-serifTitle tracking-wider font-semibold opacity-90">(ROWZAYE ATHAR TRAVELS)</span>
+          </p>
+          <p class="footer-sub text-xs text-brand-gold font-medium">
+            প্রোপ্রাইটার: মুফতি মাহমুদুল হাসান &nbsp;|&nbsp; “বিশ্বাসের পথে আমাদের সাথে”
+          </p>
+          <p class="footer-office text-slate-400 text-[11.5px]">
+            অফিস: <a href="https://maps.app.goo.gl/g1xFPWcDEj3agxPP7" target="_blank" class="hover:text-brand-gold transition underline">অর্কিড আবরার টাওয়ার, বাড়ির নং ১২২, রোড নং ৪/এ, স্বপ্ন ধরা হাউজিং, মোহাম্মদপুর, ঢাকা - ১২০৭</a>
+          </p>
         </div>
-        <div class="flex flex-col sm:flex-row items-center gap-3 text-xs font-sans">
+        <div class="flex flex-col sm:flex-row items-center gap-3 text-xs font-sans my-auto">
           <a href="tel:+8801719161547" class="footer-phone-link text-slate-200 hover:text-brand-gold transition flex items-center gap-1.5 font-semibold tracking-wide">
             <i class="fa-solid fa-phone text-brand-gold text-[11px]"></i>
             <span>+880 1719-16 15 47</span>
