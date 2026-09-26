@@ -279,6 +279,41 @@
       box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.4), 0 0 15px rgba(197, 155, 109, 0.15);
     }
 
+    /* Hero Mosque Icon Badge (Quick Search Form) */
+    .hero-mosque-badge {
+      background: #0f172a !important;
+      border: 1px solid rgba(197, 155, 109, 0.4) !important;
+      box-shadow: 0 0 20px rgba(197, 155, 109, 0.2) !important;
+      transition: all 0.3s ease;
+    }
+    .hero-mosque-badge i {
+      color: #c59b6d !important;
+    }
+
+    /* Package Duration Badges (Photo Overlay Badges) */
+    .pkg-duration-pill {
+      background: rgba(15, 23, 42, 0.88) !important;
+      color: #fde68a !important; /* Bright warm gold */
+      border: 1px solid rgba(245, 158, 11, 0.45) !important;
+      backdrop-filter: blur(8px) !important;
+      letter-spacing: 0.02em;
+    }
+    .pkg-duration-pill-teal {
+      background: rgba(15, 23, 42, 0.88) !important;
+      color: #5eead4 !important; /* Bright crisp teal */
+      border: 1px solid rgba(45, 212, 191, 0.45) !important;
+      backdrop-filter: blur(8px) !important;
+      letter-spacing: 0.02em;
+    }
+
+    /* VIP Exclusive Top-Right Badge */
+    .pkg-vip-badge {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+      color: #020617 !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.03em;
+    }
+
     /* ==========================================================================
        LUXURY LIGHT THEME SYSTEM
        ========================================================================== */
@@ -474,6 +509,14 @@
       background: #ffffff !important;
       border-color: #e2e8f0 !important;
     }
+    html.light-mode .hero-mosque-badge {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
+      border: 1.5px solid #fde68a !important;
+      box-shadow: 0 4px 15px rgba(217, 119, 6, 0.16) !important;
+    }
+    html.light-mode .hero-mosque-badge i {
+      color: #b45309 !important;
+    }
 
     /* Form Inputs & Dropdowns */
     html.light-mode input,
@@ -595,6 +638,26 @@
       background-color: #fffbeb !important;
       color: #92400e !important;
       border-color: #fde68a !important;
+    }
+    /* Package Photo Overlay Badges in Light Mode */
+    html.light-mode .pkg-duration-pill {
+      background: #ffffff !important;
+      color: #92400e !important; /* Deep contrast amber bronze */
+      border: 1.5px solid #fde68a !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22) !important;
+      font-weight: 800 !important;
+    }
+    html.light-mode .pkg-duration-pill-teal {
+      background: #ffffff !important;
+      color: #0f766e !important; /* Deep contrast jewel teal */
+      border: 1.5px solid #99f6e4 !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22) !important;
+      font-weight: 800 !important;
+    }
+    html.light-mode .pkg-vip-badge {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+      color: #020617 !important;
+      font-weight: 800 !important;
     }
 
     /* Custom Requirement Banner */
@@ -870,49 +933,49 @@
 
   <!-- Main Navigation -->
   <nav class="bg-brand-dark/95 border-b border-slate-800/70 sticky top-8 sm:top-9 z-40 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16 sm:h-20">
+    <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+      <div class="flex justify-between items-center h-16 sm:h-20 gap-2 xl:gap-4 2xl:gap-8">
         
-        <!-- Logo & Brand Info (No circular border, pure SVG & vivid) -->
-        <a href="#" class="flex items-center gap-2 sm:gap-3 group my-auto shrink-0">
-          <div class="logo-wrapper relative w-11 h-11 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex-shrink-0 flex items-center justify-center">
+        <!-- Logo & Brand Info (Balanced proportions for all screens) -->
+        <a href="#" class="flex items-center gap-2 sm:gap-2.5 group my-auto shrink-0">
+          <div class="logo-wrapper relative w-10 h-10 sm:w-12 sm:h-12 xl:w-13 xl:h-13 flex-shrink-0 flex items-center justify-center">
             <div class="logo-glow absolute inset-0 rounded-full pointer-events-none"></div>
             <img src="logo-light.png" alt="Rowzaye Athar Travels Logo" class="relative z-10 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
           </div>
           <div class="brand-text-group flex flex-col justify-center my-auto">
-            <span class="brand-title block text-sm sm:text-xl lg:text-2xl font-bold text-white tracking-tight font-bengali group-hover:text-brand-goldLight transition-colors whitespace-nowrap">
+            <span class="brand-title block text-sm sm:text-base xl:text-lg 2xl:text-xl font-bold text-white tracking-tight font-bengali group-hover:text-brand-goldLight transition-colors whitespace-nowrap">
               রওজায়ে আতহার ট্রাভেলস
             </span>
-            <span class="brand-subtitle block text-[9px] sm:text-[10.5px] lg:text-[11.5px] font-bold text-brand-gold uppercase tracking-[0.14em] lg:tracking-[0.16em] font-serifTitle whitespace-nowrap">
+            <span class="brand-subtitle block text-[8px] sm:text-[9.5px] xl:text-[10px] 2xl:text-[11px] font-bold text-brand-gold uppercase tracking-[0.12em] 2xl:tracking-[0.14em] font-serifTitle whitespace-nowrap">
               ROWZAYE ATHAR TRAVELS
             </span>
-            <span class="brand-tagline block text-[8.5px] sm:text-[9.5px] lg:text-[10.5px] text-slate-300/85 font-bengali whitespace-nowrap">
+            <span class="brand-tagline hidden 2xl:block text-[8.5px] sm:text-[9.5px] 2xl:text-[10px] text-slate-300/85 font-bengali whitespace-nowrap">
               “বিশ্বাসের পথে আমাদের সাথে”
             </span>
           </div>
         </a>
 
-        <!-- Desktop Navigation Links (Only shown on xl screens 1280px+ where it fits perfectly!) -->
-        <div class="hidden xl:flex items-center space-x-4 2xl:space-x-6 text-[13px] 2xl:text-sm font-medium whitespace-nowrap">
-          <a href="#hero" class="text-brand-gold transition hover:text-amber-300">মূলপাতা</a>
-          <a href="#packages" class="text-slate-200 hover:text-brand-gold transition">উমরাহ প্যাকেজ</a>
-          <a href="#hajj" class="hover:text-brand-gold transition font-semibold text-amber-300">হজ ২০২৭</a>
-          <a href="#services" class="text-slate-200 hover:text-brand-gold transition">আমাদের সেবা</a>
-          <a href="#ziyarah" class="text-slate-200 hover:text-brand-gold transition">জিয়ারত গাইড</a>
-          <a href="#why-us" class="text-slate-200 hover:text-brand-gold transition">কেন আমরা</a>
-          <a href="#faq" class="text-slate-200 hover:text-brand-gold transition">প্রশ্নোত্তর</a>
-          <a href="#contact" class="text-slate-200 hover:text-brand-gold transition">যোগাযোগ</a>
+        <!-- Desktop Navigation Links (Properly proportional without any collision) -->
+        <div class="hidden xl:flex items-center space-x-1.5 xl:space-x-2 2xl:space-x-4 text-[12px] xl:text-[12.5px] 2xl:text-[13.5px] font-medium whitespace-nowrap shrink-0">
+          <a href="#hero" class="text-brand-gold transition hover:text-amber-300 px-1 py-1">মূলপাতা</a>
+          <a href="#packages" class="text-slate-200 hover:text-brand-gold transition px-1 py-1">উমরাহ প্যাকেজ</a>
+          <a href="#hajj" class="hover:text-brand-gold transition font-semibold text-amber-300 px-1 py-1">হজ ২০২৭</a>
+          <a href="#services" class="text-slate-200 hover:text-brand-gold transition px-1 py-1">আমাদের সেবা</a>
+          <a href="#ziyarah" class="text-slate-200 hover:text-brand-gold transition px-1 py-1">জিয়ারত গাইড</a>
+          <a href="#why-us" class="text-slate-200 hover:text-brand-gold transition px-1 py-1">কেন আমরা</a>
+          <a href="#faq" class="text-slate-200 hover:text-brand-gold transition px-1 py-1">প্রশ্নোত্তর</a>
+          <a href="#contact" class="text-slate-200 hover:text-brand-gold transition px-1 py-1">যোগাযোগ</a>
         </div>
 
         <!-- Right Action Group (Theme Toggle + CTA on xl + Hamburger on < xl) -->
-        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <!-- Theme Toggle Button -->
           <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="থিম পরিবর্তন করুন (লাইট / ডার্ক)" title="থিম পরিবর্তন করুন" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-amber-400 hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm shrink-0">
             <i id="themeIcon" class="fa-solid fa-sun text-sm sm:text-base shrink-0"></i>
           </button>
 
           <!-- Desktop CTA Button -->
-          <a href="#packages" class="hidden xl:inline-flex bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-4 py-2.5 rounded-lg shadow-lg hover:shadow-brand-gold/30 hover:brightness-110 transition duration-300 text-xs 2xl:text-sm items-center gap-1.5 whitespace-nowrap shrink-0">
+          <a href="#packages" class="hidden xl:inline-flex bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-3.5 py-2 rounded-lg shadow-md hover:shadow-brand-gold/30 hover:brightness-110 transition duration-300 text-xs items-center gap-1.5 whitespace-nowrap shrink-0">
             <i class="fa-solid fa-kaaba shrink-0"></i> <span>প্যাকেজ বুকিং</span>
           </a>
 
@@ -1054,7 +1117,7 @@
             </div>
 
             <div class="text-center mb-6">
-              <div class="inline-block p-3 rounded-full bg-slate-900 border border-brand-gold/30 mb-3">
+              <div class="hero-mosque-badge inline-flex items-center justify-center w-14 h-14 rounded-full bg-slate-900 border border-brand-gold/30 mb-3 shadow-md">
                 <i class="fa-solid fa-mosque text-2xl text-brand-gold shrink-0"></i>
               </div>
               <h3 class="text-xl font-bold text-white font-bengali">কাস্টমাইজড উমরাহ অফার খুঁজুন</h3>
@@ -1188,7 +1251,7 @@
             <div class="relative h-44 bg-slate-800 overflow-hidden shrink-0">
               <img src="images/pkg_economy.jpg" alt="Kaaba Sharif" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-black/40"></div>
-              <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-brand-gold text-[11px] font-semibold px-2.5 py-0.5 rounded-full border border-brand-gold/30">
+              <span class="pkg-duration-pill absolute top-3 left-3 text-[11px] font-bold px-3 py-1 rounded-full shadow-md z-10">
                 ১৪ দিন / ১৩ রাত
               </span>
               <span class="absolute bottom-2.5 left-3 text-white font-bold text-base">
@@ -1253,7 +1316,7 @@
             <div class="relative h-44 bg-slate-800 overflow-hidden shrink-0">
               <img src="images/pkg_standard.jpg" alt="Masjid an-Nabawi Green Dome" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-black/40"></div>
-              <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-brand-tealLight text-[11px] font-semibold px-2.5 py-0.5 rounded-full border border-brand-teal/30">
+              <span class="pkg-duration-pill-teal absolute top-3 left-3 text-[11px] font-bold px-3 py-1 rounded-full shadow-md z-10">
                 ১৪ দিন / ১৩ রাত
               </span>
               <span class="absolute bottom-2.5 left-3 text-white font-bold text-base">
@@ -1314,7 +1377,7 @@
         <!-- Package 3: Executive VIP (Featured) -->
         <div class="package-card vip bg-gradient-to-b from-brand-card to-brand-navy rounded-2xl border-2 border-brand-gold overflow-hidden card-hover flex flex-col justify-between relative shadow-xl h-full">
           <!-- Featured Tag -->
-          <div class="absolute top-0 right-0 bg-brand-gold text-slate-950 text-[10px] font-bold px-3 py-1 rounded-bl-xl z-10 shadow-md">
+          <div class="pkg-vip-badge absolute top-0 right-0 text-[10px] font-extrabold px-3 py-1 rounded-bl-xl z-10 shadow-md">
             ★ এক্সক্লুসিভ VIP
           </div>
 
@@ -1323,7 +1386,7 @@
             <div class="relative h-44 bg-slate-800 overflow-hidden shrink-0">
               <img src="images/pkg_vip.jpg" alt="Clock Tower Makkah" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-black/40"></div>
-              <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-brand-gold text-[11px] font-semibold px-2.5 py-0.5 rounded-full border border-brand-gold/30">
+              <span class="pkg-duration-pill absolute top-3 left-3 text-[11px] font-bold px-3 py-1 rounded-full shadow-md z-10">
                 ১৫ দিন / ১৪ রাত
               </span>
               <span class="absolute bottom-2.5 left-3 text-white font-bold text-base">
@@ -1388,7 +1451,7 @@
             <div class="relative h-44 bg-slate-800 overflow-hidden shrink-0">
               <img src="images/pkg_ramadan.jpg" alt="Holy Quran Ramadan" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-black/40"></div>
-              <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-brand-tealLight text-[11px] font-semibold px-2.5 py-0.5 rounded-full border border-brand-teal/40">
+              <span class="pkg-duration-pill-teal absolute top-3 left-3 text-[11px] font-bold px-3 py-1 rounded-full shadow-md z-10">
                 ১৫ / ২০ / ৩০ দিন
               </span>
               <span class="absolute bottom-2.5 left-3 text-white font-bold text-base">
