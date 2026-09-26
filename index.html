@@ -22,6 +22,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <script>
+    // Instant theme check before DOM render to prevent FOUT
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light' || (!saved && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.add('light-mode');
+      }
+    })();
+  </script>
+
+  <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -53,6 +63,7 @@
       font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
       background-color: #080d14;
       color: #e2e8f0;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     .gold-gradient-text {
       background: linear-gradient(135deg, #fce8b2 0%, #c59b6d 50%, #e6ca85 100%);
@@ -75,6 +86,378 @@
     .card-hover:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.6), 0 0 20px 0 rgba(197, 155, 109, 0.25);
+    }
+
+    /* ==========================================================================
+       LUXURY LIGHT THEME SYSTEM
+       ========================================================================== */
+    html.light-mode {
+      color-scheme: light;
+    }
+
+    html.light-mode body {
+      background-color: #f8fafc !important;
+      color: #1e293b !important;
+    }
+
+    /* Typography in Light Mode */
+    html.light-mode .text-white {
+      color: #0f172a !important;
+    }
+    html.light-mode .text-slate-200 {
+      color: #1e293b !important;
+    }
+    html.light-mode .text-slate-300 {
+      color: #334155 !important;
+    }
+    html.light-mode .text-slate-400 {
+      color: #64748b !important;
+    }
+    html.light-mode .text-slate-500 {
+      color: #94a3b8 !important;
+    }
+
+    /* Keep text white over dark photo overlays & colored action buttons */
+    html.light-mode .package-card .relative .text-white,
+    html.light-mode #hajj .relative .text-white,
+    html.light-mode footer .text-white,
+    html.light-mode .bg-emerald-600,
+    html.light-mode .bg-emerald-600 *,
+    html.light-mode .bg-emerald-500,
+    html.light-mode .bg-emerald-500 * {
+      color: #ffffff !important;
+    }
+
+    /* Keep dark text on gold gradients */
+    html.light-mode .bg-gradient-to-r.from-brand-gold,
+    html.light-mode .bg-gradient-to-r.from-brand-gold * {
+      color: #080d14 !important;
+    }
+
+    /* High-contrast Gold Gradient Text for Light Backgrounds */
+    html.light-mode .gold-gradient-text {
+      background: linear-gradient(135deg, #9a6308 0%, #c68913 45%, #854d0e 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    /* Hero Pattern in Light Mode */
+    html.light-mode .hero-pattern {
+      background-image: radial-gradient(rgba(180, 83, 9, 0.16) 1px, transparent 1px) !important;
+    }
+
+    /* Announcement Top Bar */
+    html.light-mode header.bg-brand-navy {
+      background-color: #f1f5f9 !important;
+      border-color: #e2e8f0 !important;
+      color: #334155 !important;
+    }
+    html.light-mode header .text-slate-300,
+    html.light-mode header a.text-slate-200 {
+      color: #1e293b !important;
+    }
+
+    /* Main Navigation in Light Mode */
+    html.light-mode nav.bg-brand-dark\/95 {
+      background-color: rgba(255, 255, 255, 0.96) !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06) !important;
+    }
+    html.light-mode nav .logo-wrapper {
+      background-color: #080d14;
+      border-radius: 0.85rem;
+      padding: 3px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    html.light-mode nav .lg\:flex a:not(.bg-gradient-to-r) {
+      color: #334155 !important;
+    }
+    html.light-mode nav .lg\:flex a:not(.bg-gradient-to-r):hover {
+      color: #b45309 !important;
+    }
+    html.light-mode nav a.text-brand-gold {
+      color: #b45309 !important;
+    }
+
+    /* Mobile Menu Drawer */
+    html.light-mode #mobileMenu {
+      background: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
+    }
+    html.light-mode #mobileMenu a {
+      background-color: #f8fafc !important;
+      border-color: #e2e8f0 !important;
+      color: #1e293b !important;
+    }
+    html.light-mode #mobileMenu a:hover {
+      background-color: #f1f5f9 !important;
+      color: #b45309 !important;
+    }
+    html.light-mode #mobileMenu .text-slate-200 {
+      color: #1e293b !important;
+    }
+
+    /* Section & Container Backgrounds */
+    html.light-mode .bg-brand-dark {
+      background-color: #f8fafc !important;
+    }
+    html.light-mode .bg-brand-navy {
+      background-color: #ffffff !important;
+    }
+    html.light-mode .bg-brand-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* Borders */
+    html.light-mode .border-slate-800,
+    html.light-mode .border-slate-800\/80,
+    html.light-mode .border-slate-800\/70,
+    html.light-mode .border-slate-800\/60,
+    html.light-mode .border-slate-700 {
+      border-color: #e2e8f0 !important;
+    }
+
+    /* Hero Elements in Light Mode */
+    html.light-mode #hero {
+      background-color: #f8fafc !important;
+    }
+    html.light-mode #hero .bg-slate-800\/80 {
+      background-color: #ffffff !important;
+      border-color: #cbd5e1 !important;
+      color: #92400e !important;
+    }
+    html.light-mode #hero .bg-slate-900\/60 {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      color: #1e293b !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    }
+    html.light-mode #hero .islamic-glow {
+      box-shadow: 0 10px 40px -10px rgba(197, 155, 109, 0.2), 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+      background: #ffffff !important;
+      border-color: #e2e8f0 !important;
+    }
+
+    /* Form Inputs & Dropdowns */
+    html.light-mode input,
+    html.light-mode select,
+    html.light-mode textarea {
+      background-color: #f8fafc !important;
+      border-color: #cbd5e1 !important;
+      color: #0f172a !important;
+    }
+    html.light-mode input::placeholder,
+    html.light-mode textarea::placeholder {
+      color: #94a3b8 !important;
+    }
+    html.light-mode input:focus,
+    html.light-mode select:focus,
+    html.light-mode textarea:focus {
+      border-color: #c59b6d !important;
+      background-color: #ffffff !important;
+      box-shadow: 0 0 0 3px rgba(197, 155, 109, 0.25) !important;
+    }
+
+    /* Key Statistics Banner */
+    html.light-mode section.border-y {
+      background: linear-gradient(to right, #f8fafc, #ffffff, #f8fafc) !important;
+      border-color: #e2e8f0 !important;
+    }
+    html.light-mode section.border-y .text-brand-gold {
+      color: #b45309 !important;
+    }
+    html.light-mode section.border-y .text-brand-tealLight {
+      color: #0f766e !important;
+    }
+
+    /* Filter Tabs */
+    html.light-mode .tab-btn.bg-slate-800 {
+      background-color: #e2e8f0 !important;
+      color: #334155 !important;
+    }
+    html.light-mode .tab-btn.bg-slate-800:hover {
+      background-color: #cbd5e1 !important;
+      color: #0f172a !important;
+    }
+    html.light-mode .tab-btn.bg-brand-gold {
+      background-color: #c59b6d !important;
+      color: #080d14 !important;
+    }
+
+    /* Package Cards */
+    html.light-mode .package-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+    }
+    html.light-mode .package-card.vip {
+      background: linear-gradient(to bottom, #ffffff, #fffdf8) !important;
+      border-color: #c59b6d !important;
+      box-shadow: 0 10px 30px -5px rgba(197, 155, 109, 0.25) !important;
+    }
+    html.light-mode .package-card.standard {
+      border-color: #0d9488 !important;
+    }
+    html.light-mode .package-card .text-brand-gold {
+      color: #b45309 !important;
+    }
+    html.light-mode .package-card .text-brand-tealLight {
+      color: #0f766e !important;
+    }
+    html.light-mode .package-card button.bg-slate-800 {
+      background-color: #f1f5f9 !important;
+      color: #0f172a !important;
+      border-color: #cbd5e1 !important;
+    }
+    html.light-mode .package-card button.bg-slate-800:hover {
+      background-color: #c59b6d !important;
+      color: #080d14 !important;
+    }
+
+    /* Badges */
+    html.light-mode .bg-emerald-950\/90 {
+      background-color: #ecfdf5 !important;
+      color: #065f46 !important;
+      border-color: #a7f3d0 !important;
+    }
+    html.light-mode .bg-teal-950\/90 {
+      background-color: #f0fdfa !important;
+      color: #115e59 !important;
+      border-color: #99f6e4 !important;
+    }
+    html.light-mode .bg-amber-950\/90 {
+      background-color: #fffbeb !important;
+      color: #92400e !important;
+      border-color: #fde68a !important;
+    }
+
+    /* Custom Requirement Banner */
+    html.light-mode .mt-12.bg-gradient-to-r {
+      background: linear-gradient(to right, #f8fafc, #ffffff, #f8fafc) !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    /* Hajj Section */
+    html.light-mode #hajj {
+      background: linear-gradient(to bottom, #f8fafc, #f1f5f9, #f8fafc) !important;
+      border-color: #e2e8f0 !important;
+    }
+    html.light-mode #hajj .bg-slate-900\/80 {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    /* Services Section */
+    html.light-mode #services .bg-brand-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+    }
+    html.light-mode #services .bg-brand-card:hover {
+      border-color: #c59b6d !important;
+      box-shadow: 0 10px 25px -5px rgba(197, 155, 109, 0.2) !important;
+    }
+
+    /* Ziyarah Section */
+    html.light-mode #ziyarah {
+      background-color: #f1f5f9 !important;
+      border-color: #e2e8f0 !important;
+    }
+    html.light-mode #ziyarah .bg-brand-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+    }
+
+    /* Why Choose Us & Reviews */
+    html.light-mode #why-us {
+      background-color: #f8fafc !important;
+      border-color: #e2e8f0 !important;
+    }
+    html.light-mode #why-us .bg-brand-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+    }
+    html.light-mode #why-us .bg-slate-900\/80 {
+      background-color: #f8fafc !important;
+      border-color: #e2e8f0 !important;
+    }
+
+    /* FAQ Section */
+    html.light-mode #faq {
+      background-color: #f1f5f9 !important;
+    }
+    html.light-mode #faq .bg-brand-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+    }
+
+    /* Contact Section */
+    html.light-mode #contact {
+      background-color: #f8fafc !important;
+      border-color: #e2e8f0 !important;
+    }
+    html.light-mode #contact .bg-slate-900\/90 {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+    }
+    html.light-mode #contact .bg-brand-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+    }
+    html.light-mode #contact .w-9.h-9.bg-slate-800 {
+      background-color: #f1f5f9 !important;
+      color: #334155 !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+    html.light-mode #contact .w-9.h-9.bg-slate-800:hover {
+      background-color: #c59b6d !important;
+      color: #080d14 !important;
+    }
+    html.light-mode #contact .logo-wrapper {
+      background-color: #080d14;
+      border-radius: 0.85rem;
+      padding: 3px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    html.light-mode #contact .bg-slate-900 {
+      background-color: #ffffff !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    /* Booking Modal */
+    html.light-mode #bookingModal .bg-brand-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    }
+
+    /* Grounding Luxury Footer */
+    html.light-mode footer {
+      background-color: #080d14 !important;
+      border-color: #1e293b !important;
+      color: #94a3b8 !important;
+    }
+    html.light-mode footer .text-white {
+      color: #ffffff !important;
+    }
+    html.light-mode footer a.text-slate-200 {
+      color: #e2e8f0 !important;
+    }
+    html.light-mode footer a.text-slate-200:hover {
+      color: #c59b6d !important;
+    }
+
+    /* Universal Smooth Transition for Theme Toggling */
+    body, nav, header, section, footer, div, a, button, input, select, textarea {
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
   </style>
 </head>
@@ -107,7 +490,7 @@
         
         <!-- Logo & Brand Info (No circular border, pure SVG & vivid) -->
         <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group">
-          <div class="relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center">
+          <div class="logo-wrapper relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center">
             <img src="logo.svg" alt="Rowzaye Athar Travels Logo" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
           </div>
           <div class="flex flex-col justify-center">
@@ -135,15 +518,20 @@
           <a href="#contact" class="hover:text-brand-gold transition">যোগাযোগ</a>
         </div>
 
-        <!-- Right Action Group (Desktop CTA + Mobile/Tablet Hamburger) -->
-        <div class="flex items-center gap-3">
+        <!-- Right Action Group (Desktop CTA + Theme Toggle + Mobile/Tablet Hamburger) -->
+        <div class="flex items-center gap-2.5 sm:gap-3">
+          <!-- Theme Toggle Button -->
+          <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="থিম পরিবর্তন করুন (লাইট / ডার্ক)" title="থিম পরিবর্তন করুন" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-amber-400 hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm shrink-0">
+            <i id="themeIcon" class="fa-solid fa-sun text-base"></i>
+          </button>
+
           <!-- Desktop CTA Button -->
           <a href="#packages" class="hidden lg:flex bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold px-5 py-2.5 rounded-lg shadow-lg hover:shadow-brand-gold/30 hover:brightness-110 transition duration-300 text-sm items-center gap-2">
             <i class="fa-solid fa-kaaba"></i> প্যাকেজ বুকিং
           </a>
 
           <!-- Mobile / Half-Screen Menu Toggle Button -->
-          <button id="mobileMenuBtn" aria-label="মেনু খুলুন" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-brand-gold hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm">
+          <button id="mobileMenuBtn" aria-label="মেনু খুলুন" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-brand-gold hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm shrink-0">
             <i id="menuIcon" class="fa-solid fa-bars text-lg"></i>
           </button>
         </div>
@@ -180,6 +568,15 @@
       </div>
 
       <div class="pt-2 border-t border-slate-800 flex flex-col gap-2">
+        <!-- Mobile Theme Toggle -->
+        <button onclick="toggleTheme()" class="w-full flex items-center justify-between py-2 px-3 rounded-xl bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-medium">
+          <span class="flex items-center gap-2">
+            <i id="mobileThemeIcon" class="fa-solid fa-sun text-amber-400"></i>
+            <span>থিম পরিবর্তন করুন</span>
+          </span>
+          <span id="themeModeLabel" class="text-[11px] px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-brand-gold font-semibold">ডার্ক মোড</span>
+        </button>
+
         <a href="#packages" onclick="closeMobileMenu()" class="w-full text-center bg-gradient-to-r from-brand-gold via-amber-400 to-brand-goldDark text-slate-950 font-bold py-3 rounded-xl shadow-lg text-xs flex items-center justify-center gap-2">
           <i class="fa-solid fa-kaaba"></i> প্যাকেজ বুকিং করুন
         </a>
@@ -1127,7 +1524,7 @@
         <div class="lg:col-span-5 space-y-6">
           <div>
             <div class="flex items-center gap-3.5 mb-3">
-              <div class="relative w-14 h-14 flex-shrink-0 flex items-center justify-center">
+              <div class="logo-wrapper relative w-14 h-14 flex-shrink-0 flex items-center justify-center">
                 <img src="logo.svg" alt="Logo" class="w-full h-full object-contain">
               </div>
               <div>
@@ -1391,6 +1788,50 @@
         mobileMenu.classList.add('hidden');
       }
     }
+
+    // Theme Management (Light / Dark)
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.toggle('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      updateThemeUI(isLight);
+    }
+
+    function updateThemeUI(isLight) {
+      const desktopIcon = document.getElementById('themeIcon');
+      const mobileIcon = document.getElementById('mobileThemeIcon');
+      const label = document.getElementById('themeModeLabel');
+      const toggleBtn = document.getElementById('themeToggleBtn');
+
+      if (isLight) {
+        if (desktopIcon) desktopIcon.className = 'fa-solid fa-moon text-base text-slate-700';
+        if (mobileIcon) mobileIcon.className = 'fa-solid fa-moon text-slate-700';
+        if (label) {
+          label.innerText = 'লাইট মোড';
+          label.className = 'text-[11px] px-2.5 py-0.5 rounded-full bg-amber-100 border border-amber-300 text-amber-900 font-semibold';
+        }
+        if (toggleBtn) {
+          toggleBtn.className = 'w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 border border-slate-300 text-slate-700 hover:text-black hover:bg-slate-200 transition focus:outline-none shadow-sm shrink-0';
+          toggleBtn.setAttribute('title', 'ডার্ক মোড চালু করুন');
+        }
+      } else {
+        if (desktopIcon) desktopIcon.className = 'fa-solid fa-sun text-base text-amber-400';
+        if (mobileIcon) mobileIcon.className = 'fa-solid fa-sun text-amber-400';
+        if (label) {
+          label.innerText = 'ডার্ক মোড';
+          label.className = 'text-[11px] px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-brand-gold font-semibold';
+        }
+        if (toggleBtn) {
+          toggleBtn.className = 'w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800/80 border border-slate-700 text-amber-400 hover:text-white hover:bg-slate-700 transition focus:outline-none shadow-sm shrink-0';
+          toggleBtn.setAttribute('title', 'লাইট মোড চালু করুন');
+        }
+      }
+    }
+
+    // Sync UI on initial page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const isLight = document.documentElement.classList.contains('light-mode');
+      updateThemeUI(isLight);
+    });
 
     // Package Category Filter
     function filterPackages(category) {
